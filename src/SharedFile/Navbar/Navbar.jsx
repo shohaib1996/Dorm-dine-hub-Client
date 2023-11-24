@@ -2,13 +2,22 @@ import Container from "../../Utils/Container/Container";
 import NavbarLinks from "./NavbarLinks/NavbarLinks";
 import logo from "../../../public/images/logo_dorm_dine-removebg-preview.png"
 import { Link } from "react-router-dom";
-
-
-
-
-
+import useAuth from "../../hooks/useAuth";
+import { Tooltip } from 'react-tooltip'
+import toast from "react-hot-toast";
 
 const Navbar = () => {
+    const { user, logOut } = useAuth()
+    const handleLogOut = () => {
+        logOut()
+            .then(() => {
+                console.log('Log Out successfully')
+                toast.success("Logout Successfully")
+            })
+            .catch(error => {
+                console.error(error);
+            })
+    }
     return (
         <Container>
             <div className="navbar bg-base-100">
@@ -32,12 +41,32 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <Link to="/login">
-                        <button className="btn btn-primary bg-[#99582a] text-white border-none font-bold hover:bg-[#e08c4fd3]">Join Us</button>
-                    </Link>
-                </div>
+                    {
+                        user?.email ?
+                            <div className="dropdown dropdown-end">
+                                <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+                                    <div data-tooltip-id="my-tooltip" data-tooltip-content={`${user?.displayName && user.displayName}`} className="w-10 z-[10] rounded-full">
+                                        <img src={user?.photoURL} />
+                                        <Tooltip id="my-tooltip" />
+                                    </div>
+                                </label>
+                                <ul tabIndex={0} className="mt-3 z-[10] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
+                                    <li>
+                                        <a className="justify-between">
+                                            {user?.displayName}
+                                        </a>
+                                    </li>
+                                    <li><a onClick={handleLogOut}>Logout</a></li>
+                                </ul>
+                            </div>
+                : <Link to="/login">
+                    <button className="btn btn-primary bg-[#99582a] text-white border-none font-bold hover:bg-[#e08c4fd3]">Join Us</button>
+                </Link>
+                    }
+
             </div>
-        </Container>
+        </div>
+        </Container >
     );
 };
 

@@ -46,7 +46,7 @@ const Register = () => {
             console.log(error);
             toast.error(`${error}`)
         })
-        console.log(res.data);
+        // console.log(res.data);
 
     }
     return (
