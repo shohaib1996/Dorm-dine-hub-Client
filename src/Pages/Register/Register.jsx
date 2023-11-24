@@ -1,15 +1,52 @@
 import { useForm } from "react-hook-form";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
+import useAuth from "../../hooks/useAuth";
+import toast from "react-hot-toast";
+import { Link, useNavigate } from "react-router-dom";
 
-
+const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
+const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`
 const Register = () => {
+    const navigate = useNavigate()
+    const axiosPublic = useAxiosPublic()
+    const { createUser, logOut, updateUserProfile } = useAuth()
     const {
         register,
         handleSubmit,
         formState: { errors },
     } = useForm()
 
-    const onSubmit = (data) => {
-        console.log(data.photo[0])
+    const onSubmit = async (data) => {
+        // console.log(data.photo[0])
+        const imageFile = { image: data.photo[0] }
+        const res = await axiosPublic.post(image_hosting_api, imageFile, {
+            headers: {
+                'content-type': 'multipart/form-data'
+            }
+        })
+        createUser(data.email, data.password)
+        .then(result => {
+            const user = result.user;
+            console.log(user);
+            toast.success('Registration Successfully')
+            updateUserProfile(data.name, res.data.data.display_url)
+            .then(() => {
+                toast.success('User Created Successfully')
+                logOut()
+                .then(() => {
+                    console.log('Log Out successfully')
+                    navigate("/login")
+                })
+                .catch(error => {
+                    console.error(error);
+                })
+            })
+        })
+        .catch(error => {
+            console.log(error);
+            toast.error(`${error}`)
+        })
+        console.log(res.data);
 
     }
     return (
@@ -45,12 +82,13 @@ const Register = () => {
                             <label className="label">
                                 <span className="label-text">Photo</span>
                             </label>
-                            <input type="file" name="photo" {...register("photo")} className="file-input file-input-bordered w-full max-w-xs" required/>
+                            <input type="file" name="photo" {...register("photo")} className="file-input file-input-bordered w-full max-w-xs" required />
                         </div>
                         <div className="form-control mt-6">
-                            
+
                             <input type="submit" value="Login" className="btn btn-primary" />
                         </div>
+                        <p className="text-[#737373] text-center mt-2 text-lg">Already have an account?  <Link to="/login"><span className="text-[#00bf58] font-bold text-lg">Sign In</span></Link></p>
                     </form>
                 </div>
             </div>
