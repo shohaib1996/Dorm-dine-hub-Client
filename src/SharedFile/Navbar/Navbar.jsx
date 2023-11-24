@@ -1,6 +1,7 @@
 import Container from "../../Utils/Container/Container";
 import NavbarLinks from "./NavbarLinks/NavbarLinks";
 import logo from "../../../public/images/logo_dorm_dine-removebg-preview.png"
+import { Link } from "react-router-dom";
 
 
 
@@ -31,7 +32,9 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <button className="btn btn-primary">Join Us</button>
+                    <Link to="/login">
+                        <button className="btn btn-primary bg-[#99582a] text-white border-none font-bold hover:bg-[#e08c4fd3]">Join Us</button>
+                    </Link>
                 </div>
             </div>
         </Container>
