@@ -1,18 +1,14 @@
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import ribbon from "../../../../public/images/big-ribbon.png"
 import "./meal.css"
-import { useEffect, useState } from 'react';
-import axios from 'axios';
 import MealsCard from './MealsCard/MealsCard';
+import useMeals from '../../../hooks/useMeals';
 const MealsByCategory = () => {
-    const [meals, setMeals] = useState([])
-    useEffect(() => {
-        axios.get('/meals.json')
-            .then(res => setMeals(res.data))
-    }, [])
-    const breakFast = meals.filter(meal => meal.mealType === 'Breakfast')
-    const lunch = meals.filter(meal => meal.mealType === 'Lunch')
-    const dinner = meals.filter(meal => meal.mealType === 'Dinner')
+    const [meals] = useMeals()
+    // console.log(meals);
+    const breakFast = meals?.filter(meal => meal.mealType === 'Breakfast')
+    const lunch = meals?.filter(meal => meal.mealType === 'Lunch')
+    const dinner = meals?.filter(meal => meal.mealType === 'Dinner')
 
     return (
         <div>
@@ -61,28 +57,28 @@ const MealsByCategory = () => {
                     <TabPanel>
                         <div className='grid grid-cols-4 gap-8 mt-10 mb-12'>
                             {
-                                breakFast.map(meal => <MealsCard key={meal.id} meal={meal}></MealsCard>)
+                                breakFast?.map(meal => <MealsCard key={meal.id} meal={meal}></MealsCard>)
                             }
                         </div>
                     </TabPanel>
                     <TabPanel>
                         <div className='grid grid-cols-4 gap-8 mt-10 mb-12'>
                             {
-                                lunch.map(meal => <MealsCard key={meal.id} meal={meal}></MealsCard>)
+                                lunch?.map(meal => <MealsCard key={meal.id} meal={meal}></MealsCard>)
                             }
                         </div>
                     </TabPanel>
                     <TabPanel>
                         <div className='grid grid-cols-4 gap-8 mt-10 mb-12'>
                             {
-                                dinner.map(meal => <MealsCard key={meal.id} meal={meal}></MealsCard>)
+                                dinner?.map(meal => <MealsCard key={meal.id} meal={meal}></MealsCard>)
                             }
                         </div>
                     </TabPanel>
                     <TabPanel>
                         <div className='grid grid-cols-4 gap-8 mt-10 mb-12'>
                             {
-                                meals.map(meal => <MealsCard key={meal.id} meal={meal}></MealsCard>)
+                                meals?.map(meal => <MealsCard key={meal.id} meal={meal}></MealsCard>)
                             }
                         </div>
                     </TabPanel>

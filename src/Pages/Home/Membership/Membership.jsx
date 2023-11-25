@@ -1,12 +1,23 @@
 import ribbon from "../../../../public/images/big-ribbon.png"
-import silver from "../../../../public/images/silver_badge-removebg-preview.png"
-import gold from "../../../../public/images/gold_bage-removebg-preview.png"
-import platinum from "../../../../public/images/platinum_badge-removebg-preview.png"
+import silverImg from "../../../../public/images/silver_badge-removebg-preview.png"
+import goldImg from "../../../../public/images/gold_bage-removebg-preview.png"
+import platinumImg from "../../../../public/images/platinum_badge-removebg-preview.png"
+import { useNavigate } from "react-router-dom";
 
 const Membership = () => {
     const silver_price = 100
     const gold_price = 150
     const platinum_price = 200
+    const silver = "Silver";
+    const gold = "Gold";
+    const platinum = "Platinum";
+    const navigate = useNavigate()
+
+    const handleCheckout = (package_name) => {
+        console.log(package_name);
+        navigate(`/checkout/${package_name}`)
+
+    }
     return (
         <div>
             <div className='mt-16 max-w-4xl mx-auto relative flex flex-col justify-center items-center'>
@@ -22,8 +33,8 @@ const Membership = () => {
                     </div>
                     <div className="border-2 p-3 rounded-b-xl">
                         <div className="flex items-center justify-evenly">
-                            <h1 className="text-center pt-1">Benefits</h1>
-                            <img className="w-12 h-12" src={silver} alt="" />
+                            <h1 className="text-center pt-1">{silver}</h1>
+                            <img className="w-12 h-12" src={silverImg} alt="" />
                         </div>
                         <div className="divider my-1"></div>
                         <p className="text-center">Silver members receive a moderate discount on monthly meal plans</p>
@@ -35,7 +46,7 @@ const Membership = () => {
                         <p className="text-center">Valid for 12 Months </p>
                         <div className="divider my-1"></div>
                         <div className="flex items-center justify-center pb-3">
-                            <button className="bg-[#b88f3f] px-3 py-2 rounded-2xl text-white font-bold border-[5px] border-[#d0c2a6] hover:border-[#aacc00] hover:bg-[#55421d]">Buy Now</button>
+                            <button onClick={()=> handleCheckout(silver)} className="bg-[#b88f3f] px-3 py-2 rounded-2xl text-white font-bold border-[5px] border-[#d0c2a6] hover:border-[#aacc00] hover:bg-[#55421d]">Buy Now</button>
                         </div>
 
 
@@ -50,8 +61,8 @@ const Membership = () => {
                         </div>
                         <div className="border-2 p-3 rounded-b-xl">
                             <div className="flex items-center justify-evenly">
-                                <h1 className="text-center pt-1">Benefits</h1>
-                                <img className="w-12 h-12" src={gold} alt="" />
+                                <h1 className="text-center pt-1">{gold}</h1>
+                                <img className="w-12 h-12" src={goldImg} alt="" />
                             </div>
                             <div className="divider my-1"></div>
                             <p className="text-center">Gold members enjoy a higher discount on monthly meal plans</p>
@@ -63,7 +74,7 @@ const Membership = () => {
                             <p className="text-center">Valid for 12 Months </p>
                             <div className="divider my-1"></div>
                             <div className="flex items-center justify-center pb-3">
-                                <button className="bg-[#b88f3f] px-3 py-2 rounded-2xl text-white font-bold border-[5px] border-[#d0c2a6] hover:border-[#aacc00] hover:bg-[#55421d]">Buy Now</button>
+                                <button onClick={()=> handleCheckout(gold)} className="bg-[#b88f3f] px-3 py-2 rounded-2xl text-white font-bold border-[5px] border-[#d0c2a6] hover:border-[#aacc00] hover:bg-[#55421d]">Buy Now</button>
                             </div>
 
 
@@ -81,8 +92,8 @@ const Membership = () => {
                         </div>
                         <div className="border-2 p-3 rounded-b-xl">
                             <div className="flex items-center justify-evenly">
-                                <h1 className="text-center pt-1">Benefits</h1>
-                                <img className="w-12 h-12" src={platinum} alt="" />
+                                <h1 className="text-center pt-1">{platinum}</h1>
+                                <img className="w-12 h-12" src={platinumImg} alt="" />
                             </div>
                             <div className="divider my-1"></div>
                             <p className="text-center">Enjoy the highest discounts on all food-related services</p>
@@ -94,7 +105,7 @@ const Membership = () => {
                             <p className="text-center">Valid for 12 Months </p>
                             <div className="divider my-1"></div>
                             <div className="flex items-center justify-center pb-3">
-                                <button className="bg-[#b88f3f] px-3 py-2 rounded-2xl text-white font-bold border-[5px] border-[#d0c2a6] hover:border-[#aacc00] hover:bg-[#55421d]">Buy Now</button>
+                                <button onClick={()=> handleCheckout(platinum)} className="bg-[#b88f3f] px-3 py-2 rounded-2xl text-white font-bold border-[5px] border-[#d0c2a6] hover:border-[#aacc00] hover:bg-[#55421d]">Buy Now</button>
                             </div>
 
 
