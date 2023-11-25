@@ -2,7 +2,7 @@ import ribbon from "../../../../public/images/big-ribbon.png"
 import silverImg from "../../../../public/images/silver_badge-removebg-preview.png"
 import goldImg from "../../../../public/images/gold_bage-removebg-preview.png"
 import platinumImg from "../../../../public/images/platinum_badge-removebg-preview.png"
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Membership = () => {
     const silver_price = 100
@@ -11,13 +11,6 @@ const Membership = () => {
     const silver = "Silver";
     const gold = "Gold";
     const platinum = "Platinum";
-    const navigate = useNavigate()
-
-    const handleCheckout = (package_name) => {
-        console.log(package_name);
-        navigate(`/checkout/${package_name}`)
-
-    }
     return (
         <div>
             <div className='mt-16 max-w-4xl mx-auto relative flex flex-col justify-center items-center'>
@@ -46,7 +39,9 @@ const Membership = () => {
                         <p className="text-center">Valid for 12 Months </p>
                         <div className="divider my-1"></div>
                         <div className="flex items-center justify-center pb-3">
-                            <button onClick={()=> handleCheckout(silver)} className="bg-[#b88f3f] px-3 py-2 rounded-2xl text-white font-bold border-[5px] border-[#d0c2a6] hover:border-[#aacc00] hover:bg-[#55421d]">Buy Now</button>
+                            <Link to={`/checkout/${silver}`}>
+                                <button className="bg-[#b88f3f] px-3 py-2 rounded-2xl text-white font-bold border-[5px] border-[#d0c2a6] hover:border-[#aacc00] hover:bg-[#55421d]">Buy Now</button>
+                            </Link>
                         </div>
 
 
@@ -74,7 +69,9 @@ const Membership = () => {
                             <p className="text-center">Valid for 12 Months </p>
                             <div className="divider my-1"></div>
                             <div className="flex items-center justify-center pb-3">
-                                <button onClick={()=> handleCheckout(gold)} className="bg-[#b88f3f] px-3 py-2 rounded-2xl text-white font-bold border-[5px] border-[#d0c2a6] hover:border-[#aacc00] hover:bg-[#55421d]">Buy Now</button>
+                                <Link to={`/checkout/${gold}`}>
+                                    <button className="bg-[#b88f3f] px-3 py-2 rounded-2xl text-white font-bold border-[5px] border-[#d0c2a6] hover:border-[#aacc00] hover:bg-[#55421d]">Buy Now</button>
+                                </Link>
                             </div>
 
 
@@ -105,14 +102,16 @@ const Membership = () => {
                             <p className="text-center">Valid for 12 Months </p>
                             <div className="divider my-1"></div>
                             <div className="flex items-center justify-center pb-3">
-                                <button onClick={()=> handleCheckout(platinum)} className="bg-[#b88f3f] px-3 py-2 rounded-2xl text-white font-bold border-[5px] border-[#d0c2a6] hover:border-[#aacc00] hover:bg-[#55421d]">Buy Now</button>
+                                <Link to={`/checkout/${platinum}`}>
+                                    <button className="bg-[#b88f3f] px-3 py-2 rounded-2xl text-white font-bold border-[5px] border-[#d0c2a6] hover:border-[#aacc00] hover:bg-[#55421d]">Buy Now</button>
+                                </Link>
                             </div>
-
-
                         </div>
                     </div>
 
                 </div>
+
+
 
             </div>
         </div>
