@@ -1,10 +1,14 @@
 import { useForm } from "react-hook-form";
 import useAuth from "../../hooks/useAuth";
 import toast from "react-hot-toast";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 
 const Login = () => {
     const {signIn} = useAuth()
+    const navigate = useNavigate()
+    const location = useLocation()
+    const from = location.state?.from?.pathname || "/";
     const {
         register,
         handleSubmit,
@@ -18,6 +22,7 @@ const Login = () => {
             const user = result.user;
             console.log(user);
             toast.success('Login Successfully')
+            navigate(from, { replace: true });
         })
         .catch(error => {
             console.error(error)
@@ -50,6 +55,7 @@ const Login = () => {
                         <div className="form-control mt-6">
                             <button className="btn btn-primary">Login</button>
                         </div>
+                        <p className="text-[#737373] text-center mt-2 text-lg">Don&apos;t have an account?  <Link to="/register"><span className="text-[#00bf58] font-bold text-lg">Register</span></Link></p>
                     </form>
                 </div>
             </div>

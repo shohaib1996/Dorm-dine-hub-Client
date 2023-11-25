@@ -32,6 +32,18 @@ const Register = () => {
             updateUserProfile(data.name, res.data.data.display_url)
             .then(() => {
                 toast.success('User Created Successfully')
+                const newUser = {
+                    name: data.name,
+                    email: data.email,
+                    image: res.data.data.display_url,
+                    badge: 'Bronze'
+                }
+                axiosPublic.post("/users", newUser)
+                .then(res => {
+                    console.log(res);
+                }).catch(error => {
+                    console.error(error);
+                })
                 logOut()
                 .then(() => {
                     console.log('Log Out successfully')
@@ -86,7 +98,7 @@ const Register = () => {
                         </div>
                         <div className="form-control mt-6">
 
-                            <input type="submit" value="Login" className="btn btn-primary" />
+                            <input type="submit" value="Register" className="btn btn-primary" />
                         </div>
                         <p className="text-[#737373] text-center mt-2 text-lg">Already have an account?  <Link to="/login"><span className="text-[#00bf58] font-bold text-lg">Sign In</span></Link></p>
                     </form>

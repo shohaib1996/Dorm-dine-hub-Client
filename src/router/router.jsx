@@ -8,6 +8,8 @@ import Login from "../Pages/Login/Login";
 import Register from "../Pages/Register/Register";
 import MealDetails from "../components/MealDetails/MealDetails";
 import Checkout from "../components/Checkout/Checkout";
+import AddMeal from "../Pages/Dashboard/AddMeal/AddMeal";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 
 const router = createBrowserRouter([
@@ -42,7 +44,11 @@ const router = createBrowserRouter([
             },
             {
                 path: "/checkout/:package_name",
-                element: <Checkout></Checkout>
+                element: <PrivateRoute><Checkout></Checkout></PrivateRoute>
+            },
+            {
+              path: "/add-meal",
+              element: <AddMeal></AddMeal>
             }
         ]
     }

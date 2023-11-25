@@ -11,7 +11,7 @@
       "likes": 20,
       "reviews": 5,
       "adminName": "Healthy Start Breakfasts",
-      "adminEmail": "info@healthystartbreakfasts.com"
+      "admin_Email": "info@healthystartbreakfasts.com"
     },
     {
       "mealTitle": "Blueberry Pancake Stack",
@@ -25,7 +25,7 @@
       "likes": 25,
       "reviews": 7,
       "adminName": "Sweet Morning Delights",
-      "adminEmail": "info@sweetmorningdelights.com"
+      "admin_Email": "info@sweetmorningdelights.com"
     },
     {
       "mealTitle": "Eggs Benedict",
@@ -39,7 +39,7 @@
       "likes": 18,
       "reviews": 6,
       "adminName": "Morning Delicacies Bistro",
-      "adminEmail": "info@morningdelicacies.com"
+      "admin_Email": "info@morningdelicacies.com"
     },
     {
       "mealTitle": "Mediterranean Quinoa Salad",
@@ -53,7 +53,7 @@
       "likes": 15,
       "reviews": 3,
       "adminName": "Fresh & Fit Lunches",
-      "adminEmail": "info@freshfitlunches.com"
+      "admin_Email": "info@freshfitlunches.com"
     },
     {
       "mealTitle": "Caprese Panini",
@@ -67,7 +67,7 @@
       "likes": 18,
       "reviews": 5,
       "adminName": "Gourmet Panini Express",
-      "adminEmail": "info@gourmetpaniniexpress.com"
+      "admin_Email": "info@gourmetpaniniexpress.com"
     },
     {
       "mealTitle": "Chicken Caesar Salad",
@@ -81,7 +81,7 @@
       "likes": 22,
       "reviews": 4,
       "adminName": "Fresh Greens Catering",
-      "adminEmail": "info@freshgreenscatering.com"
+      "admin_Email": "info@freshgreenscatering.com"
     },
     {
       "mealTitle": "Grilled Chicken with Rosemary Potatoes",
@@ -95,7 +95,7 @@
       "likes": 18,
       "reviews": 4,
       "adminName": "Savory Suppers Catering",
-      "adminEmail": "info@savorysuppers.com"
+      "admin_Email": "info@savorysuppers.com"
     },
     {
       "mealTitle": "Shrimp and Asparagus Risotto",
@@ -109,7 +109,7 @@
       "likes": 24,
       "reviews": 6,
       "adminName": "Risotto Royale",
-      "adminEmail": "info@risottoroyale.com"
+      "admin_Email": "info@risottoroyale.com"
     },
     {
       "mealTitle": "Vegetarian Stir-Fry",
@@ -123,7 +123,7 @@
       "likes": 22,
       "reviews": 6,
       "adminName": "Green Eats Catering",
-      "adminEmail": "info@greeneatscatering.com"
+      "admin_Email": "info@greeneatscatering.com"
     }
   ]
   

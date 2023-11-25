@@ -12,6 +12,7 @@ import useAuth from "../../hooks/useAuth";
 import toast from "react-hot-toast";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import Swal from "sweetalert2";
+import useUser from "../../hooks/useUser";
 
 
 
@@ -26,7 +27,7 @@ const MealDetails = () => {
     // console.log(Object.keys(mealObject).toString());
     // console.log(filteredMeal);
     // console.log(mealObject);
-    const { _id, mealTitle, mealType, ingredients, mealImage, description, price, rating, timeDate, likes, reviews, adminName, adminEmail } = mealObject
+    const { _id, mealTitle, mealType, ingredients, mealImage, description, price, rating, timeDate, likes, reviews, adminName, admin_Email } = mealObject
     const [like, setLike] = useState(false)
     useEffect(() => {
         setLike(mealObject.liked)
@@ -35,6 +36,10 @@ const MealDetails = () => {
     let globalYear = "";
     let globalMonth = "";
     let globalDay = "";
+    const [singleUser] = useUser()
+    const objUser = {...singleUser[0]}
+    const {badge} = objUser
+    
 
     if (timeDate) {
         const [year, month, date] = timeDate.split('-');
@@ -95,6 +100,14 @@ const MealDetails = () => {
         });
 
     }
+    const handleRequest = () => {
+        if(!user){
+            toast.error("Please Log in first to make a request!!")
+        }
+        if(badge === 'Bronze'){
+            toast.error("Please buy a membership")
+        }
+    }
 
 
 
@@ -145,7 +158,7 @@ const MealDetails = () => {
 
                             </div>
                             <div className="w-full p-5 ml-5 my-5">
-                                <button className="btn btn-primary bg-[#b88f3f] hover:bg-[#55421d] font-bold text-white border-none  w-full">Make Meal Request</button>
+                                <button onClick={handleRequest} className="btn btn-primary bg-[#b88f3f] hover:bg-[#55421d] font-bold text-white border-none  w-full">Make Meal Request</button>
                             </div>
                         </div>
 
