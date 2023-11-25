@@ -50,7 +50,7 @@ const Checkout = () => {
             setObj(platinumObj)
         }
     }, [package_name]);
-    console.log(obj.price);
+    // console.log(obj);
     const stripePromise = loadStripe(import.meta.env.VITE_Payment_Key);
 
     return (
@@ -60,7 +60,7 @@ const Checkout = () => {
                 <h1 className="mt-20 text-center text-4xl font-bold uppercase">Payment</h1>
                 <div>
                     <Elements stripe={stripePromise}>
-                        <CheckoutForm price={obj.price}></CheckoutForm>
+                        <CheckoutForm price={obj.price} package_name={obj.name}></CheckoutForm>
 
                     </Elements>
                 </div>

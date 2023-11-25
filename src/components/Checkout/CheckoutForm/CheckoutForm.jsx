@@ -3,12 +3,17 @@ import { useEffect, useState } from "react";
 import { PropTypes } from 'prop-types';
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import useAuth from "../../../hooks/useAuth";
+import useUser from "../../../hooks/useUser";
+import Swal from "sweetalert2";
 
 
-const CheckoutForm = ({ price }) => {
+const CheckoutForm = ({ price, package_name }) => {
     const axiosPublic = useAxiosPublic()
     // console.log(price);
     const { user } = useAuth()
+    const [singleUser] = useUser()
+    const objUser = {...singleUser[0]}
+    const {_id} = objUser
     const [clientSecret, setClientSecret] = useState("");
     const [transactionId, setTransactionId] = useState('');
     const stripe = useStripe();
@@ -60,7 +65,31 @@ const CheckoutForm = ({ price }) => {
         }
         else {
             console.log('payment intent', paymentIntent)
-            setTransactionId(paymentIntent.id)
+            if(paymentIntent.status === 'succeeded'){
+                setTransactionId(paymentIntent.id)
+                const userBadge = {
+                    badge: package_name
+                }
+                axiosPublic.put(`/users/${_id}`, userBadge)
+                .then(res => {
+                    console.log(res.data)
+                    if(res.data.modifiedCount > 0){
+                        
+                        Swal.fire({
+                            position: "top-end",
+                            icon: "success",
+                            title: "Thank you for the purchase",
+                            showConfirmButton: false,
+                            timer: 2000
+                        });
+                    }
+                })
+                .catch(error => {
+                    console.log(error);
+                })
+
+            }
+            
         }
 
     }
@@ -94,6 +123,7 @@ const CheckoutForm = ({ price }) => {
 };
 CheckoutForm.propTypes = {
     price: PropTypes.number,
+    package_name: PropTypes.string
 }
 
 export default CheckoutForm;
