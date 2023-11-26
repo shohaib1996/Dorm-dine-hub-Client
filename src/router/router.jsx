@@ -10,6 +10,10 @@ import MealDetails from "../components/MealDetails/MealDetails";
 import Checkout from "../components/Checkout/Checkout";
 import AddMeal from "../Pages/Dashboard/AddMeal/AddMeal";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
+import Dashboard from "../Layout/Dashboard/Dashboard";
+import UserProfile from "../Pages/Dashboard/UserProfile/UserProfile";
+import RequestedMeals from "../Pages/Dashboard/RequestedMeals/RequestedMeals";
+import UserReviews from "../Pages/Dashboard/UserReviews/UserReviews";
 
 
 const router = createBrowserRouter([
@@ -49,6 +53,24 @@ const router = createBrowserRouter([
             {
               path: "/add-meal",
               element: <AddMeal></AddMeal>
+            }
+        ]
+    },
+    {
+        path: "/dashboard",
+        element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
+        children: [
+            {
+                path: "user-profile",
+                element: <UserProfile></UserProfile>
+            },
+            {
+                path: "requested-meals",
+                element: <RequestedMeals></RequestedMeals>
+            },
+            {
+                path: "user-reviews",
+                element: <UserReviews></UserReviews>
             }
         ]
     }

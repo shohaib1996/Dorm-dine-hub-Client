@@ -7,7 +7,7 @@ import useUser from "../../../hooks/useUser";
 import Swal from "sweetalert2";
 
 
-const CheckoutForm = ({ price, package_name }) => {
+const CheckoutForm = ({ price, package_name, badge_image }) => {
     const axiosPublic = useAxiosPublic()
     // console.log(price);
     const { user } = useAuth()
@@ -68,7 +68,8 @@ const CheckoutForm = ({ price, package_name }) => {
             if(paymentIntent.status === 'succeeded'){
                 setTransactionId(paymentIntent.id)
                 const userBadge = {
-                    badge: package_name
+                    badge: package_name,
+                    badge_image: badge_image
                 }
                 axiosPublic.put(`/users/${_id}`, userBadge)
                 .then(res => {
@@ -123,7 +124,8 @@ const CheckoutForm = ({ price, package_name }) => {
 };
 CheckoutForm.propTypes = {
     price: PropTypes.number,
-    package_name: PropTypes.string
+    package_name: PropTypes.string,
+    badge_image: PropTypes.string
 }
 
 export default CheckoutForm;

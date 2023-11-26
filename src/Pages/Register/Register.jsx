@@ -36,7 +36,8 @@ const Register = () => {
                     name: data.name,
                     email: data.email,
                     image: res.data.data.display_url,
-                    badge: 'Bronze'
+                    badge: 'Bronze',
+                    badge_image: "https://i.ibb.co/TrN8dFr/bronze-badge-removebg-preview.png"
                 }
                 axiosPublic.post("/users", newUser)
                 .then(res => {

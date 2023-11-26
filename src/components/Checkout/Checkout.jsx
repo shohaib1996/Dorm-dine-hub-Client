@@ -9,6 +9,7 @@ import CheckoutForm from "./CheckoutForm/CheckoutForm";
 
 const silverObj = {
     name: "Silver",
+    badge_image: "https://i.ibb.co/pzrbDjN/silver-badge-removebg-preview.png",
     price: 100,
     benefits: [
         "Moderate discount on monthly meal plans",
@@ -19,6 +20,7 @@ const silverObj = {
 }
 const goldObj = {
     name: "Gold",
+    badge_image: "https://i.ibb.co/ynJQQRv/gold-bage-removebg-preview.png",
     price: 150,
     benefits: [
         "Higher discount on monthly meal plans",
@@ -29,6 +31,7 @@ const goldObj = {
 }
 const platinumObj = {
     name: "Platinum",
+    badge_image: "https://i.ibb.co/mBtyvLc/platinum-badge-removebg-preview.png",
     price: 200,
     benefits: [
         "Highest discounts on all food-related services",
@@ -60,7 +63,7 @@ const Checkout = () => {
                 <h1 className="mt-20 text-center text-4xl font-bold uppercase">Payment</h1>
                 <div>
                     <Elements stripe={stripePromise}>
-                        <CheckoutForm price={obj.price} package_name={obj.name}></CheckoutForm>
+                        <CheckoutForm price={obj.price} package_name={obj.name} badge_image={obj.badge_image}></CheckoutForm>
 
                     </Elements>
                 </div>

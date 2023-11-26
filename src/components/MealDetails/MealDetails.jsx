@@ -204,7 +204,7 @@ const MealDetails = () => {
                 </div>
                 <div className="max-w-sm mx-auto my-12">
                     {
-                        reviewsById?.map(review => <ReviewsCard key={review._id} review={review}></ReviewsCard>)
+                        reviewsById?.data?.map(review => <ReviewsCard key={review._id} review={review}></ReviewsCard>)
                     }
                 </div>
             </Container>
