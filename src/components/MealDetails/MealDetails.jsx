@@ -37,9 +37,10 @@ const MealDetails = () => {
     let globalMonth = "";
     let globalDay = "";
     const [singleUser] = useUser()
-    const objUser = {...singleUser[0]}
-    const {badge} = objUser
-    
+    const objUser = { ...singleUser[0] }
+    const { badge } = objUser
+    console.log(badge);
+
 
     if (timeDate) {
         const [year, month, date] = timeDate.split('-');
@@ -101,12 +102,27 @@ const MealDetails = () => {
 
     }
     const handleRequest = () => {
-        if(!user){
+        const newRequestMeal = {
+            mealTitle, mealType, ingredients, mealImage, description, price, rating, timeDate, likes, reviews, adminName, admin_Email, user_email: user?.email, status: 'pending'
+        }
+        if (!user) {
             toast.error("Please Log in first to make a request!!")
         }
-        if(badge === 'Bronze'){
+        if (badge === 'Bronze') {
             toast.error("Please buy a membership")
+        } else {
+            axiosPublic.post("/request-meals", newRequestMeal)
+                .then(res => {
+                    console.log(res.data)
+                    if(res.data.insertedId){
+                        toast.success('Meal request Done')
+                    }
+                })
+                .catch(error => {
+                    console.log(error);
+                })
         }
+
     }
 
 
@@ -161,6 +177,7 @@ const MealDetails = () => {
                                 <button onClick={handleRequest} className="btn btn-primary bg-[#b88f3f] hover:bg-[#55421d] font-bold text-white border-none  w-full">Make Meal Request</button>
                             </div>
                         </div>
+                        <div className="divider"><img className='animate-spin' src="https://wedesignthemes.com/html/bella/skins/palebrown/images/driver-two.png" alt="" /></div>
 
                     </div>
                 </div>
