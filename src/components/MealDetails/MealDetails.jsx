@@ -13,13 +13,16 @@ import toast from "react-hot-toast";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import Swal from "sweetalert2";
 import useUser from "../../hooks/useUser";
+import ReviewModal from "./ReviewModal/ReviewModal";
+import { useQuery } from "@tanstack/react-query";
+import ReviewsCard from "../ReviewsCard/ReviewsCard";
 
 
 
 const MealDetails = () => {
     const axiosPublic = useAxiosPublic()
     const { user } = useAuth()
-
+    const [showModal, setShowModal] = useState(false)
     const [meals, refetch] = useMeals()
     const { id } = useParams()
     const filteredMeal = meals.filter(meal => meal._id == id)
@@ -32,14 +35,24 @@ const MealDetails = () => {
     useEffect(() => {
         setLike(mealObject.liked)
     }, [mealObject.liked])
-    console.log(like);
+    // console.log(like);
     let globalYear = "";
     let globalMonth = "";
     let globalDay = "";
     const [singleUser] = useUser()
     const objUser = { ...singleUser[0] }
     const { badge } = objUser
-    console.log(badge);
+    // console.log(badge);
+    const {data: reviewsById=[], refetch: reload} = useQuery({
+        queryKey: ['reviews', _id],
+        queryFn: async() => {
+            const res = await axiosPublic.get(`/reviews?id=${_id}`)
+            const data = await res.data
+            return data
+        }
+    })
+    console.log(reviewsById);
+
 
 
     if (timeDate) {
@@ -114,7 +127,7 @@ const MealDetails = () => {
             axiosPublic.post("/request-meals", newRequestMeal)
                 .then(res => {
                     console.log(res.data)
-                    if(res.data.insertedId){
+                    if (res.data.insertedId) {
                         toast.success('Meal request Done')
                     }
                 })
@@ -131,7 +144,7 @@ const MealDetails = () => {
         <div>
             <Navbar></Navbar>
             <Container>
-                <div>
+                <div className="mb-12">
                     <div className="flex justify-between mt-8 p-5">
                         <h1 className="text-4xl font-bold">Meal Detail</h1>
                         <Link to="/meals">
@@ -177,9 +190,22 @@ const MealDetails = () => {
                                 <button onClick={handleRequest} className="btn btn-primary bg-[#b88f3f] hover:bg-[#55421d] font-bold text-white border-none  w-full">Make Meal Request</button>
                             </div>
                         </div>
-                        <div className="divider"><img className='animate-spin' src="https://wedesignthemes.com/html/bella/skins/palebrown/images/driver-two.png" alt="" /></div>
+
 
                     </div>
+                    <div className="divider"><img className='animate-spin my-12' src="https://wedesignthemes.com/html/bella/skins/palebrown/images/driver-two.png" alt="" /></div>
+                    <div className="flex justify-center flex-col relative">
+                        <img className="mt-12 w-[800px] mx-auto" src="https://static.vecteezy.com/system/resources/thumbnails/022/324/115/small/gold-ribbon-banner-free-png.png" alt="" />
+                        <p className="text-center text-4xl font-bold text-[#283618] absolute top-20 left-[512px]">Add a review !!</p>
+                        <button onClick={()=> setShowModal(true)} className="btn w-96 h-48 border-4 border-slate-600 bg-transparent hover:bg-transparent hover:border-green-500 mx-auto text-3xl">Add a review</button>
+                    </div>
+                    <ReviewModal refetch={refetch} reload={reload} showModal={showModal} setShowModal={setShowModal} meal={mealObject}></ReviewModal>
+
+                </div>
+                <div className="max-w-sm mx-auto my-12">
+                    {
+                        reviewsById?.map(review => <ReviewsCard key={review._id} review={review}></ReviewsCard>)
+                    }
                 </div>
             </Container>
             <Footer></Footer>
