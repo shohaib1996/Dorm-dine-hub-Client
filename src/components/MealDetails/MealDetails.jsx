@@ -39,10 +39,6 @@ const MealDetails = () => {
     let globalYear = "";
     let globalMonth = "";
     let globalDay = "";
-    const [singleUser] = useUser()
-    const objUser = { ...singleUser[0] }
-    const { badge } = objUser
-    // console.log(badge);
     const {data: reviewsById=[], refetch: reload} = useQuery({
         queryKey: ['reviews', _id],
         queryFn: async() => {
@@ -51,8 +47,15 @@ const MealDetails = () => {
             return data
         }
     })
-    console.log(reviewsById);
+    // console.log(reviewsById);
 
+    const [singleUser,,isLoading] = useUser()
+    if(isLoading){
+        return <p>Loading</p>
+    }
+    const objUser = { ...singleUser.data[0] }
+    console.log(objUser);
+    const { badge } = objUser
 
 
     if (timeDate) {
@@ -66,10 +69,11 @@ const MealDetails = () => {
     // console.log(globalYear, globalMonth, globalDay);
     const convertedDate = `${globalYear}/${globalMonth}/${globalDay}`
     const handleLike = () => {
+        const updatedMealData = {mealTitle, mealType, ingredients, mealImage, description, price, rating, timeDate, likes: likes + 1, reviews, adminName, admin_Email, liked: true,}
         if (!user) {
             toast.error('Please Login first to like')
         } else {
-            axiosPublic.put(`/meals/${_id}`, { liked: true, likes: likes + 1 })
+            axiosPublic.put(`/meals/${_id}`, updatedMealData)
                 .then(res => {
                     refetch()
                     console.log(res.data.modifiedCount)
@@ -116,7 +120,7 @@ const MealDetails = () => {
     }
     const handleRequest = () => {
         const newRequestMeal = {
-            mealTitle, mealType, ingredients, mealImage, description, price, rating, timeDate, likes, reviews, adminName, admin_Email, user_email: user?.email, status: 'pending'
+            mealTitle, mealType, ingredients, mealImage, description, price, rating, timeDate, likes, reviews, adminName, admin_Email, user_email: user?.email,user_name: user?.displayName, status: 'pending'
         }
         if (!user) {
             toast.error("Please Log in first to make a request!!")

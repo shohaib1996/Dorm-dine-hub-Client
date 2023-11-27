@@ -11,9 +11,7 @@ const CheckoutForm = ({ price, package_name, badge_image }) => {
     const axiosPublic = useAxiosPublic()
     // console.log(price);
     const { user } = useAuth()
-    const [singleUser] = useUser()
-    const objUser = {...singleUser[0]}
-    const {_id} = objUser
+   
     const [clientSecret, setClientSecret] = useState("");
     const [transactionId, setTransactionId] = useState('');
     const stripe = useStripe();
@@ -29,6 +27,13 @@ const CheckoutForm = ({ price, package_name, badge_image }) => {
         }
 
     }, [axiosPublic, price])
+    const [singleUser,, isLoading] = useUser()
+    if(isLoading){
+        return <p>Loading</p>
+    }
+    const objUser = {...singleUser.data[0]}
+    const {_id} = objUser
+    console.log(_id);
 
     const handleSubmit = async (e) => {
         e.preventDefault()

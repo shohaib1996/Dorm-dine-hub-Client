@@ -14,6 +14,13 @@ import Dashboard from "../Layout/Dashboard/Dashboard";
 import UserProfile from "../Pages/Dashboard/UserProfile/UserProfile";
 import RequestedMeals from "../Pages/Dashboard/RequestedMeals/RequestedMeals";
 import UserReviews from "../Pages/Dashboard/UserReviews/UserReviews";
+import AdminProfile from "../Pages/Dashboard/AdminProfile/AdminProfile";
+import ManageUsers from "../Pages/Dashboard/ManageUsers/ManageUsers";
+import AllMeals from "../Pages/Dashboard/AllMeals/AllMeals";
+import AllReviews from "../Pages/Dashboard/AllReviews/AllReviews";
+import ServeMeals from "../Pages/Dashboard/ServeMeals/ServeMeals";
+import UpcomingMeals from "../Pages/Dashboard/UpcomingMeals/UpcomingMeals";
+import UpdateMeal from "../components/UpdateMeal/UpdateMeal";
 
 
 const router = createBrowserRouter([
@@ -51,8 +58,8 @@ const router = createBrowserRouter([
                 element: <PrivateRoute><Checkout></Checkout></PrivateRoute>
             },
             {
-              path: "/add-meal",
-              element: <AddMeal></AddMeal>
+                path: "/add-meal",
+                element: <AddMeal></AddMeal>
             }
         ]
     },
@@ -71,6 +78,38 @@ const router = createBrowserRouter([
             {
                 path: "user-reviews",
                 element: <UserReviews></UserReviews>
+            },
+            {
+                path: "admin-profile",
+                element: <AdminProfile></AdminProfile>
+            },
+            {
+                path: "manage-users",
+                element: <ManageUsers></ManageUsers>
+            },
+            {
+                path: "add-meal",
+                element: <AddMeal></AddMeal>
+            },
+            {
+                path: "all-meals",
+                element: <AllMeals></AllMeals>
+            },
+            {
+                path: "all-reviews",
+                element: <AllReviews></AllReviews>
+            },
+            {
+                path: "serve-meal",
+                element: <ServeMeals></ServeMeals>
+            },
+            {
+                path: "upComing-meals",
+                element: <UpcomingMeals></UpcomingMeals>
+            },
+            {
+                path: "update-meal/:id",
+                element: <UpdateMeal></UpdateMeal>
             }
         ]
     }

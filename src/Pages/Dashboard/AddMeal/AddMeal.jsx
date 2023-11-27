@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import useAuth from "../../../hooks/useAuth";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
+import toast from "react-hot-toast";
 
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`
@@ -37,15 +38,29 @@ const AddMeal = () => {
         // console.log(data);
         if (submit) {
             console.log('Adding meal:', mealData);
+            axiosPublic.post("/meals", mealData)
+            .then(res => {
+                console.log(res.data);
+                if(res.data.insertedId){
+                    toast.success("Successfully added meal")
+                }
+            })
         } else {
             console.log('Adding to Upcoming');
+            axiosPublic.post("/upcoming-meals", mealData)
+            .then(res => {
+                console.log(res.data);
+                if(res.data.insertedId){
+                    toast.success("Successfully added to upcoming meal")
+                }
+            })
 
         }
 
 
     }
     return (
-        <div>
+        <div className="p-5">
             <h1 className="text-5xl text-center font-bold my-5">Add A Meal</h1>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="grid grid-cols-3 gap-5">
@@ -105,7 +120,7 @@ const AddMeal = () => {
                     </div>
                     <div className="form-control">
                         <label className="label">
-                            <span className="label-text">Ingredients(please put comma after each ingredient)</span>
+                            <span className="label-text">Ingredients(please put comma after each ingredient)*</span>
                         </label>
                         <input type="text" {...register('ingredients', { required: true })} name="ingredients" placeholder="please put comma after each ingredient.." className="input input-bordered" required />
                     </div>
@@ -129,7 +144,7 @@ const AddMeal = () => {
                     <input onClick={() => setSubmit(true)} type="submit" name="addMeal" className="btn btn-secondary" id="" value="Add Meal" />
 
 
-                    <input onClick={() => setSubmit(false)} type="submit" name="addToUpcoming" className="btn btn-secondary" id="" value="addToUpcoming" />
+                    <input onClick={() => setSubmit(false)} type="submit" name="addToUpcoming" className="btn btn-secondary" id="" value="Add To Upcoming" />
 
 
                 </div>

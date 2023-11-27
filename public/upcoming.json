@@ -1,0 +1,184 @@
+[
+    {
+        "mealTitle": "Teriyaki Salmon Bowl",
+        "mealType": "Lunch",
+        "mealImage": "https://www.mygfguide.com/wp-content/uploads/2020/01/00000IMG_00000_BURST20200131133521757_COVER-735x551.jpg",
+        "ingredients": [
+            "Grilled salmon fillet",
+            "Stir-fried vegetables",
+            "Brown rice",
+            "Teriyaki sauce",
+            "Sesame seeds"
+        ],
+        "description": "A delicious and nutritious lunch option featuring succulent grilled salmon served over a bed of brown rice and stir-fried vegetables. Drizzled with savory teriyaki sauce and garnished with sesame seeds for an extra burst of flavor.",
+        "price": 13.99,
+        "rating": 4,
+        "timeDate": "2023-11-27T12:30:00.000Z",
+        "likes": 30,
+        "reviews": 18,
+        "adminName": "shohaib",
+        "admin_Email": "mama@mami.com"
+    },
+    {
+        "mealTitle": "Caprese Salad with Balsamic Glaze",
+        "mealType": "Lunch",
+        "mealImage": "https://food.fnr.sndimg.com/content/dam/images/food/fullset/2013/7/18/0/WU0314H_caprese-salad-recipe_s4x3.jpg.rend.hgtvcom.616.462.suffix/1530799895174.jpeg",
+        "ingredients": [
+            "Fresh mozzarella",
+            "Tomatoes",
+            "Basil leaves",
+            "Balsamic glaze",
+            "Extra virgin olive oil"
+        ],
+        "description": "A light and refreshing lunch option featuring the classic combination of fresh mozzarella, ripe tomatoes, and basil leaves. Drizzled with a rich balsamic glaze and a touch of extra virgin olive oil for a delightful Caprese salad experience.",
+        "price": 10.99,
+        "rating": 4.5,
+        "timeDate": "2023-11-27T13:45:00.000Z",
+        "likes": 25,
+        "reviews": 14,
+        "adminName": "shohaib",
+        "admin_Email": "mama@mami.com"
+    },
+    {
+        "mealTitle": "Vegan Buddha Bowl",
+        "mealType": "Lunch",
+        "mealImage": "https://assets-global.website-files.com/60da4419d98adf0a36dc660e/6171ad5ced87812863e86ba6_GrainFreeBuddhaBowl-2-1-scaled.jpg",
+        "ingredients": [
+            "Quinoa",
+            "Roasted sweet potatoes",
+            "Avocado slices",
+            "Chickpeas",
+            "Tahini dressing"
+        ],
+        "description": "A nourishing and plant-based lunch option featuring a colorful array of quinoa, roasted sweet potatoes, avocado slices, and chickpeas. Topped with a creamy tahini dressing for a satisfying and wholesome vegan Buddha Bowl.",
+        "price": 12.99,
+        "rating": 4.5,
+        "timeDate": "2023-11-27T12:00:00.000Z",
+        "likes": 28,
+        "reviews": 16,
+        "adminName": "shohaib",
+        "admin_Email": "mama@mami.com"
+    },
+    {
+        "mealTitle": "Blueberry Almond Overnight Oats",
+        "mealType": "Breakfast",
+        "mealImage": "https://www.organizeyourselfskinny.com/wp-content/uploads/2021/06/June-2021-Feature-and-collage-1.png",
+        "ingredients": [
+            "Rolled oats",
+            "Almond milk",
+            "Blueberries",
+            "Almonds",
+            "Maple syrup"
+        ],
+        "description": "A nutritious and easy-to-prep breakfast option featuring rolled oats soaked in almond milk, topped with fresh blueberries, sliced almonds, and a drizzle of maple syrup. Perfect for a quick and healthy start to your day.",
+        "price": 7.99,
+        "rating": 4.4,
+        "timeDate": "2023-11-27T07:00:00.000Z",
+        "likes": 22,
+        "reviews": 10,
+        "adminName": "shohaib",
+        "admin_Email": "mama@mami.com"
+    },
+    {
+        "mealTitle": "Egg and Spinach Breakfast Wrap",
+        "mealType": "Breakfast",
+        "mealImage": "https://onebalancedlife.com/wp-content/uploads/2020/08/Breakfast-Wrap-scaled-720x720.jpg",
+        "ingredients": [
+            "Scrambled eggs",
+            "Fresh spinach",
+            "Whole wheat wrap",
+            "Cherry tomatoes",
+            "Cheese",
+            "Salsa"
+        ],
+        "description": "A protein-packed breakfast option featuring fluffy scrambled eggs, fresh spinach, and cherry tomatoes wrapped in a whole wheat tortilla. Topped with melted cheese and salsa for a satisfying morning meal.",
+        "price": 9.49,
+        "rating": 4.6,
+        "timeDate": "2023-11-27T08:30:00.000Z",
+        "likes": 27,
+        "reviews": 15,
+        "adminName": "shohaib",
+        "admin_Email": "mama@mami.com"
+    },
+    {
+        "mealTitle": "Pancakes with Mixed Berry Compote",
+        "mealType": "Breakfast",
+        "mealImage": "https://www.jessicagavin.com/wp-content/uploads/2014/09/healthy-oat-pancakes-with-berry-compote-sauce-1200.jpg",
+        "ingredients": [
+            "Fluffy pancakes",
+            "Mixed berries",
+            "Maple syrup",
+            "Whipped cream"
+        ],
+        "description": "A classic and indulgent breakfast option featuring a stack of fluffy pancakes topped with a delightful mixed berry compote. Drizzled with maple syrup and a dollop of whipped cream for a sweet morning treat.",
+        "price": 8.99,
+        "rating": 4.7,
+        "timeDate": "2023-11-27T09:45:00.000Z",
+        "likes": 32,
+        "reviews": 20,
+        "adminName": "shohaib",
+        "admin_Email": "mama@mami.com"
+    },
+    {
+        "mealTitle": "Lemon Herb Grilled Chicken",
+        "mealType": "Dinner",
+        "mealImage": "https://www.feastingathome.com/wp-content/uploads/2021/06/Grilled-lemon-Herb-Chicken-17.jpg",
+        "ingredients": [
+            "Grilled chicken breast",
+            "Lemon zest",
+            "Fresh herbs",
+            "Roasted vegetables",
+            "Quinoa"
+        ],
+        "description": "A flavorful and wholesome dinner option featuring succulent grilled chicken breast marinated with lemon zest and fresh herbs. Served alongside a medley of roasted vegetables and quinoa for a balanced and satisfying meal.",
+        "price": 15.99,
+        "rating": 4.9,
+        "timeDate": "2023-11-27T18:30:00.000Z",
+        "likes": 35,
+        "reviews": 22,
+        "adminName": "shohaib",
+        "admin_Email": "mama@mami.com"
+    },
+    {
+        "mealTitle": "Vegetarian Stuffed Bell Peppers",
+        "mealType": "Dinner",
+        "mealImage": "https://thebeanbites.com/wp-content/uploads/2020/03/Instant-Pot-Stuffed-Peppers-10-720x540.jpg",
+        "ingredients": [
+            "Quinoa",
+            "Black beans",
+            "Corn",
+            "Tomatoes",
+            "Cheese",
+            "Bell peppers"
+        ],
+        "description": "A delicious and colorful vegetarian dinner option featuring bell peppers stuffed with a hearty mix of quinoa, black beans, corn, tomatoes, and cheese. Baked to perfection for a wholesome and satisfying meal.",
+        "price": 12.99,
+        "rating": 4.7,
+        "timeDate": "2023-11-27T19:45:00.000Z",
+        "likes": 28,
+        "reviews": 18,
+        "adminName": "shohaib",
+        "admin_Email": "mama@mami.com"
+    },
+    {
+        "mealTitle": "Salmon and Asparagus Foil Packets",
+        "mealType": "Dinner",
+        "mealImage": "https://www.eatwell101.com/wp-content/uploads/2019/03/baked-salmon-in-foil-recipe.jpg",
+        "ingredients": [
+            "Salmon fillets",
+            "Asparagus spears",
+            "Lemon slices",
+            "Garlic",
+            "Dill",
+            "Olive oil"
+        ],
+        "description": "A simple and flavorful dinner option featuring individual foil packets with salmon fillets, asparagus spears, lemon slices, garlic, and dill. Baked to perfection with a drizzle of olive oil for a delicious and hassle-free meal.",
+        "price": 14.49,
+        "rating": 4.6,
+        "timeDate": "2023-11-27T18:00:00.000Z",
+        "likes": 30,
+        "reviews": 16,
+        "adminName": "shohaib",
+        "admin_Email": "mama@mami.com"
+    }
+]

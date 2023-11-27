@@ -4,7 +4,7 @@ import useAxiosPublic from "./useAxiosPublic";
 
 const useMeals = () => {
     const axiosPublic = useAxiosPublic()
-    const {data: meals = [], refetch} = useQuery({
+    const {data: meals = [], refetch, isLoading} = useQuery({
         queryKey: ["meals"],
         queryFn: async() => {
             const res = await axiosPublic.get("/meals")
@@ -12,7 +12,7 @@ const useMeals = () => {
             return data
         }
     })
-    return [meals, refetch]
+    return [meals, refetch, isLoading]
 };
 
 export default useMeals;

@@ -8,7 +8,7 @@ import toast from "react-hot-toast";
 
 const Navbar = () => {
     const { user, logOut } = useAuth()
-    const isAdmin = false
+    const isAdmin = true
     const handleLogOut = () => {
         logOut()
             .then(() => {
@@ -58,7 +58,7 @@ const Navbar = () => {
                                         </a>
                                     </li>
                                     {
-                                        isAdmin ? <li><button >Dashboard</button></li> :
+                                        isAdmin ? <li><Link to="/dashboard/admin-profile"><button >Dashboard</button></Link></li> :
                                             <li><Link to="/dashboard/user-profile"><button >Dashboard</button></Link></li>
 
                                     }

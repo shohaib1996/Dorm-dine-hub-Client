@@ -3,9 +3,13 @@ import ribbonImg from "../../../../public/images/big-ribbon.png"
 
 
 const UserProfile = () => {
-    const [singleUser] = useUser()
+    const [singleUser,,isLoading] = useUser()
     // console.log(singleUser);
-    const objUser = {...singleUser[0]}
+    if(isLoading){
+        return <p>Loading</p>
+    }
+    const objUser = {...singleUser.data[0]}
+    console.log(objUser);
     const {badge,image, badge_image, name, email} = objUser
     return (
         <div>
