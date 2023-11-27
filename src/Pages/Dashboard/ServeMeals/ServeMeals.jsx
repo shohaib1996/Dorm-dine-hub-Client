@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import ribbonImg from "../../../../public/images/big-ribbon.png"
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
@@ -6,6 +6,8 @@ import ServeMealsRow from './ServeMealsRow/ServeMealsRow';
 
 const ServeMeals = () => {
     const axiosPublic = useAxiosPublic()
+    const inputRef = useRef()
+    const [search, setSearch] = useState([])
     const [page, setPage] = useState(0)
     const { data: allRequestMeals = [], refetch } = useQuery({
         queryKey: ["allRequestMeals", page],
@@ -25,11 +27,40 @@ const ServeMeals = () => {
     const pages = Number.isInteger(numberOfPages) && numberOfPages > 0 ? [...Array(numberOfPages).keys()] : [];
     // const pages = [...Array(numberOfPages).keys()]
     console.log(pages);
+    const handleSearch = (e) => {
+        
+        e.preventDefault()
+        const inputValue = inputRef.current.value
+        if(inputValue.includes("@")){
+            console.log(inputValue);
+            axiosPublic.get(`/request-meals?email=${inputValue}`)
+            .then(res=> {
+                setSearch(res.data.data);
+            })
+        }
+        else{
+            axiosPublic.get(`/request-meals?username=${inputValue}`)
+            .then(res => {
+                setSearch(res.data.data);
+            })
+        }
+        
+
+    }
+
     return (
         <div>
             <div className="max-w-2xl mx-auto p-8 relative">
                 <img src={ribbonImg} alt="" />
                 <p className="text-3xl font-bold  text-center absolute top-14 text-white left-[220px]">Requested Meals</p>
+            </div>
+            <p className='text-xs italic font-bold text-center my-2'>Please for email search atleast put (@)</p>
+            <div className='max-w-2xl mx-auto flex justify-center'>
+                <div className="join">
+                    
+                    <input ref={inputRef} className="input input-bordered join-item" placeholder="email and username" />
+                    <button onClick={handleSearch} className="btn bg-[#aacc00] join-item rounded-r-full">Search</button>
+                </div>
             </div>
             <div className="flex flex-col p-5">
                 <div className="-m-1.5 overflow-x-auto">
@@ -79,7 +110,7 @@ const ServeMeals = () => {
                                 </thead>
                                 <tbody className="divide-y divide-gray-200 dark:divide-gray-700">
                                     {
-                                       allRequestMeals?.data?.map((meal, i) => <ServeMealsRow i={i} key={meal._id} meal={meal} refetch={refetch}></ServeMealsRow>)
+                                       search.length > 0 ? search?.map((meal, i) => <ServeMealsRow i={i} key={meal._id} meal={meal} refetch={refetch}></ServeMealsRow>): allRequestMeals?.data?.map((meal, i) => <ServeMealsRow i={i} key={meal._id} meal={meal} refetch={refetch}></ServeMealsRow>)
                                     }
 
                                 </tbody>
