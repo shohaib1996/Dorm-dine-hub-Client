@@ -8,6 +8,7 @@ import toast from "react-hot-toast";
 
 const Navbar = () => {
     const { user, logOut } = useAuth()
+    const isAdmin = false
     const handleLogOut = () => {
         logOut()
             .then(() => {
@@ -56,16 +57,21 @@ const Navbar = () => {
                                             {user?.displayName}
                                         </a>
                                     </li>
+                                    {
+                                        isAdmin ? <li><button >Dashboard</button></li> :
+                                            <li><Link to="/dashboard/user-profile"><button >Dashboard</button></Link></li>
+
+                                    }
                                     <li><a onClick={handleLogOut}>Logout</a></li>
                                 </ul>
                             </div>
-                : <Link to="/login">
-                    <button className="btn btn-primary bg-[#99582a] text-white border-none font-bold hover:bg-[#e08c4fd3]">Join Us</button>
-                </Link>
+                            : <Link to="/login">
+                                <button className="btn btn-primary bg-[#99582a] text-white border-none font-bold hover:bg-[#e08c4fd3]">Join Us</button>
+                            </Link>
                     }
 
+                </div>
             </div>
-        </div>
         </Container >
     );
 };

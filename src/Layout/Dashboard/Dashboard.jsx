@@ -94,7 +94,7 @@ const Dashboard = () => {
                                 <NavLink
                                     to="/dashboard/user-profile"
                                     className={({ isActive, isPending }) =>
-                                        isPending ? "pending" : isActive ? "bg-[#aacc00]" : ""
+                                        isPending ? "pending" : isActive ? "active text-white" : ""
                                     }
                                 >  
                                     My Profile
@@ -104,7 +104,7 @@ const Dashboard = () => {
                                 <NavLink
                                     to="/dashboard/requested-meals"
                                     className={({ isActive, isPending }) =>
-                                        isPending ? "pending" : isActive ? "active" : ""
+                                        isPending ? "pending" : isActive ? "active text-white" : ""
                                     }
                                 >
                                     
@@ -115,7 +115,7 @@ const Dashboard = () => {
                                 <NavLink
                                     to="/dashboard/user-reviews"
                                     className={({ isActive, isPending }) =>
-                                        isPending ? "pending" : isActive ? "active" : ""
+                                        isPending ? "pending" : isActive ? "active text-white" : ""
                                     }
                                 >
                                     

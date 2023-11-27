@@ -27,6 +27,14 @@ const RequestedMealsRow = ({meal, i}) => {
                         {status}
                     </button>
                 </td>
+                <td className="px-6 py-4 whitespace-nowrap text-end text-sm font-medium">
+                    <button
+                        type="button"
+                        className="btn text-white btn-sm bg-red-600 hover:bg-red-800"
+                    >
+                        Cancel
+                    </button>
+                </td>
             </tr>
         </>
     );

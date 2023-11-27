@@ -59,6 +59,12 @@ const RequestedMeals = () => {
                                         >
                                             Status
                                         </th>
+                                        <th
+                                            scope="col"
+                                            className="px-6 py-3 text-end text-xs font-medium  uppercase"
+                                        >
+                                           Action
+                                        </th>
                                     </tr>
                                 </thead>
                                 <tbody className="divide-y divide-gray-200 dark:divide-gray-700">

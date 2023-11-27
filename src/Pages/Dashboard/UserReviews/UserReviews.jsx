@@ -88,7 +88,7 @@ const UserReviews = () => {
                                 </thead>
                                 <tbody className="divide-y divide-gray-200 dark:divide-gray-700">
                                     {
-                                        reviews?.data?.map((review, i) => <UserReviewsRow i={i} key={review._id} review={review}></UserReviewsRow>)
+                                        reviews?.data?.map((review, i) => <UserReviewsRow i={i} key={review._id} review={review} refetch={refetch}></UserReviewsRow>)
                                     }
 
                                 </tbody>
