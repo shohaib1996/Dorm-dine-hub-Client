@@ -1,8 +1,28 @@
 import { NavLink, Outlet } from "react-router-dom";
+import useAdmin from "../../hooks/useAdmin";
+import { useEffect, useState } from "react";
+import useAuth from "../../hooks/useAuth";
 
 
 const Dashboard = () => {
-    const isAdmin = true
+    const {user} = useAuth()
+    const [admin, setAdmin] = useState(false)
+    const [isAdmin, isLoading] = useAdmin()
+    useEffect(() => {
+        if (!isLoading) {
+          const findAdmin = isAdmin.find(individualUser => individualUser.email === user?.email);
+          console.log(findAdmin);
+          if (findAdmin) {
+            setAdmin(true);
+          } else {
+            setAdmin(false);
+          }
+        }
+      }, [user, isAdmin, isLoading]);
+    
+      if (isLoading) {
+        return <p>Loading...</p>;
+      }
     return (
         <div className="drawer lg:drawer-open ">
             <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
@@ -22,7 +42,7 @@ const Dashboard = () => {
                     </p>
                     {/* Sidebar content here */}
                     {
-                        isAdmin ? <>
+                        admin ? <>
                             <li>
                                 <NavLink
                                     to="/dashboard/admin-profile"

@@ -15,10 +15,10 @@ const Membership = () => {
         <div>
             <div className='mt-16 max-w-4xl mx-auto relative flex flex-col justify-center items-center'>
                 <img src={ribbon} alt="" />
-                <p className='text-2xl font-bold text-white absolute top-3 left-[290px]'>Our Membership Programme</p>
-                <p className='max-w-xl text-xs absolute top-12 text-white font-bold text-center left-[160px]'>A membership program typically offers various tiers or levels with increasing benefits as members progress from one tier to another. Here&apos;s an example breakdown for a membership program with silver, gold, and platinum tiers</p>
+                <p className='text-lg md:text-2xl lg:text-2xl font-bold text-white absolute top-3 left-[95px] md:left-[270px] lg:left-[290px]'>Our Membership Programme</p>
+                <p className='max-w-xl hidden lg:flex text-xs absolute top-12 text-white font-bold text-center left-[160px]'>A membership program typically offers various tiers or levels with increasing benefits as members progress from one tier to another. Here&apos;s an example breakdown for a membership program with silver, gold, and platinum tiers</p>
             </div>
-            <div className="flex justify-center items-center gap-7 mt-8 mb-14">
+            <div className="flex flex-col lg:flex-row justify-center items-center gap-7 mt-8 mb-14">
                 <div className="relative w-[300px]">
                     <div>
                         <img src="https://wedesignthemes.com/html/bella/skins/palebrown/images/pr-brown.png" alt="" />

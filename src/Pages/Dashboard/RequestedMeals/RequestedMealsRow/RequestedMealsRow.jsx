@@ -1,9 +1,23 @@
 
 import { PropTypes } from 'prop-types';
+import useAxiosPublic from '../../../../hooks/useAxiosPublic';
+import toast from 'react-hot-toast';
 
 
-const RequestedMealsRow = ({meal, i}) => {
-    const {mealTitle, likes, reviews, status} = meal
+const RequestedMealsRow = ({meal, i, refetch}) => {
+    const axiosPublic = useAxiosPublic()
+    const {mealTitle, likes, reviews, status, _id} = meal
+    const handleCancel = (id, mealTitle) => {
+        console.log(id, mealTitle);
+        axiosPublic.delete(`/request-meals/${id}`)
+        .then(res => {
+            console.log(res.data);
+            if(res.data.deletedCount > 0){
+                refetch()
+                toast.success(`${mealTitle} is canceled`)
+            }
+        })
+    } 
     return (
         <>
             <tr className=''>
@@ -29,10 +43,11 @@ const RequestedMealsRow = ({meal, i}) => {
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap text-end text-sm font-medium">
                     <button
+                        onClick={()=> handleCancel(_id, mealTitle)}
                         type="button"
                         className="btn text-white btn-sm bg-red-600 hover:bg-red-800"
                     >
-                        Cancel
+                        {status === 'pending' ? "Cancel" : "Delete"}
                     </button>
                 </td>
             </tr>
@@ -41,6 +56,7 @@ const RequestedMealsRow = ({meal, i}) => {
 };
 RequestedMealsRow.propTypes = {
     meal: PropTypes.object,
-    i: PropTypes.number
+    i: PropTypes.number,
+    refetch: PropTypes.func
 }
 export default RequestedMealsRow;

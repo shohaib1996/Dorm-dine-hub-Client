@@ -4,7 +4,7 @@ import useRequestedMealsByUser from "../../../hooks/useRequestedMealsByUser";
 import RequestedMealsRow from "./RequestedMealsRow/RequestedMealsRow";
 
 const RequestedMeals = () => {
-    const [page, setPage] = useState(0)  
+    const [page, setPage] = useState(0)
     const [requestedMeals, refetch] = useRequestedMealsByUser({ page })
     useEffect(() => {
         refetch();
@@ -22,6 +22,7 @@ const RequestedMeals = () => {
                 <img src={ribbonImg} alt="" />
                 <p className="text-3xl font-bold  text-center absolute top-14 text-white left-[220px]">Requested Meals</p>
             </div>
+            <h1 className="text-center text-4xl font-semibold">Total Requested Meals: {requestedMeals.count}</h1>
             <div className="flex flex-col p-5">
                 <div className="-m-1.5 overflow-x-auto">
                     <div className="p-1.5 min-w-full inline-block align-middle">
@@ -63,13 +64,18 @@ const RequestedMeals = () => {
                                             scope="col"
                                             className="px-6 py-3 text-end text-xs font-medium  uppercase"
                                         >
-                                           Action
+                                            Action
                                         </th>
                                     </tr>
                                 </thead>
                                 <tbody className="divide-y divide-gray-200 dark:divide-gray-700">
                                     {
-                                        requestedMeals?.data?.map((meal, i) => <RequestedMealsRow i={i} key={meal._id} meal={meal}></RequestedMealsRow>)
+                                        requestedMeals?.data?.map((meal, i) => <RequestedMealsRow
+                                            i={i}
+                                            key={meal._id}
+                                            meal={meal}
+                                            refetch={refetch}
+                                        ></RequestedMealsRow>)
                                     }
 
                                 </tbody>
@@ -81,7 +87,7 @@ const RequestedMeals = () => {
                                 pages?.map(p => <button
                                     onClick={() => setPage(p)}
                                     key={p}
-                                    className={page == p ? "bg-[#aacc00] btn text-white btn-sm": "btn-sm btn"}
+                                    className={page == p ? "bg-[#aacc00] btn text-white btn-sm" : "btn-sm btn"}
                                 >{p + 1}</button>)
                             }
                             <button onClick={() => setPage(Math.min(page + 1, pages.length - 1))} className="btn hover:bg-[#aacc00] hover:text-white">Next</button>

@@ -19,6 +19,7 @@ const UpcomingMeals = () => {
     useEffect(() => {
         refetch();
     }, [page, refetch]);
+    
 
     const numberOfPages = Math.ceil(upcomingMeals.length / 10);
     console.log(numberOfPages);

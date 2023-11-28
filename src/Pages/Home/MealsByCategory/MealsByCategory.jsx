@@ -14,10 +14,10 @@ const MealsByCategory = () => {
         <div>
             <div className='mt-16 max-w-5xl mx-auto relative'>
                 <img src={ribbon} alt="" />
-                <p className='text-2xl font-bold text-white absolute top-3 left-[370px] '>Meals By Category</p>
-                <p className='max-w-xl text-xs absolute top-12 text-white font-bold text-center left-[190px]'>Appetizers are small, flavorful dishes served before the main course to stimulate the appetite. Common examples include bruschetta, stuffed mushrooms, and shrimp cocktail. They are designed to whet the palate and set the tone for the meal</p>
+                <p className='text-lg md:text-2xl lg:text-2xl font-bold text-white absolute top-3 left-[140px] md:left-[330px] lg:left-[370px] '>Meals By Category</p>
+                <p className='max-w-xl hidden lg:flex text-xs absolute top-12 text-white font-bold text-center left-[190px]'>Appetizers are small, flavorful dishes served before the main course to stimulate the appetite. Common examples include bruschetta, stuffed mushrooms, and shrimp cocktail. They are designed to whet the palate and set the tone for the meal</p>
             </div>
-            <div className='mt-14'>
+            <div className='mt-14 p-2'>
                 <Tabs>
                     <TabList className="flex items-center flex-row justify-center">
                         <Tab>
@@ -55,30 +55,30 @@ const MealsByCategory = () => {
                     </TabList>
 
                     <TabPanel>
-                        <div className='grid grid-cols-4 gap-8 mt-10 mb-12'>
+                        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4  gap-8 mt-10 mb-12'>
                             {
-                                breakFast?.map(meal => <MealsCard key={meal.id} meal={meal}></MealsCard>)
+                                breakFast?.slice(0, 8).map(meal => <MealsCard key={meal.id} meal={meal}></MealsCard>)
                             }
                         </div>
                     </TabPanel>
                     <TabPanel>
-                        <div className='grid grid-cols-4 gap-8 mt-10 mb-12'>
+                        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-10 mb-12'>
                             {
-                                lunch?.map(meal => <MealsCard key={meal.id} meal={meal}></MealsCard>)
+                                lunch?.slice(0, 8).map(meal => <MealsCard key={meal.id} meal={meal}></MealsCard>)
                             }
                         </div>
                     </TabPanel>
                     <TabPanel>
-                        <div className='grid grid-cols-4 gap-8 mt-10 mb-12'>
+                        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-10 mb-12'>
                             {
-                                dinner?.map(meal => <MealsCard key={meal.id} meal={meal}></MealsCard>)
+                                dinner?.slice(0, 8).map(meal => <MealsCard key={meal.id} meal={meal}></MealsCard>)
                             }
                         </div>
                     </TabPanel>
                     <TabPanel>
-                        <div className='grid grid-cols-4 gap-8 mt-10 mb-12'>
+                        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-10 mb-12'>
                             {
-                                meals?.map(meal => <MealsCard key={meal.id} meal={meal}></MealsCard>)
+                                meals?.slice(0, 8).map(meal => <MealsCard key={meal.id} meal={meal}></MealsCard>)
                             }
                         </div>
                     </TabPanel>

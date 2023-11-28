@@ -5,10 +5,31 @@ import { Link } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import { Tooltip } from 'react-tooltip'
 import toast from "react-hot-toast";
+import useAdmin from "../../hooks/useAdmin";
+import { useEffect, useState } from "react";
+import { FaBell } from "react-icons/fa";
 
 const Navbar = () => {
     const { user, logOut } = useAuth()
-    const isAdmin = true
+    const [admin, setAdmin] = useState(false)
+    const [isAdmin, isLoading] = useAdmin()
+    useEffect(() => {
+        if (!isLoading) {
+            const findAdmin = isAdmin.find(individualUser => individualUser.email === user?.email);
+            console.log(findAdmin);
+            if (findAdmin) {
+                setAdmin(true);
+            } else {
+                setAdmin(false);
+            }
+        }
+    }, [user, isAdmin, isLoading]);
+
+    if (isLoading) {
+        return <p>Loading...</p>;
+    }
+    // const isAdmin = false
+    console.log(isAdmin);
     const handleLogOut = () => {
         logOut()
             .then(() => {
@@ -33,7 +54,7 @@ const Navbar = () => {
                     </div>
                     <a className="flex items-center">
                         <img className="w-20 rounded-3xl mr-3 h-12" src={logo} alt="logo" />
-                        <p><span className="bg-[#99582a] text-white text-xl p-1 rounded-md font-bold">DormDine</span><span className="text-xl text-[#283618] font-bold">Hub</span></p>
+                        <p><span className="bg-[#99582a] hidden lg:flex text-white text-xl p-1 rounded-md font-bold">DormDine</span><span className="text-xl hidden lg:flex text-[#283618] font-bold">Hub</span></p>
                     </a>
                 </div>
                 <div className="navbar-center hidden lg:flex">
@@ -44,29 +65,39 @@ const Navbar = () => {
                 <div className="navbar-end">
                     {
                         user?.email ?
-                            <div className="dropdown dropdown-end">
-                                <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-                                    <div data-tooltip-id="my-tooltip" data-tooltip-content={`${user?.displayName && user.displayName}`} className="w-10 z-[10] rounded-full">
-                                        <img src={user?.photoURL} />
-                                        <Tooltip id="my-tooltip" />
-                                    </div>
-                                </label>
-                                <ul tabIndex={0} className="mt-3 z-[10] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
-                                    <li>
-                                        <a className="justify-between">
-                                            {user?.displayName}
-                                        </a>
-                                    </li>
-                                    {
-                                        isAdmin ? <li><Link to="/dashboard/admin-profile"><button >Dashboard</button></Link></li> :
-                                            <li><Link to="/dashboard/user-profile"><button >Dashboard</button></Link></li>
+                            <div className="flex items-center">
+                                <FaBell className="text-2xl mr-2"></FaBell>
+                                <div className="dropdown dropdown-end">
 
-                                    }
-                                    <li><a onClick={handleLogOut}>Logout</a></li>
-                                </ul>
+                                    <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+
+                                        <div data-tooltip-id="my-tooltip" data-tooltip-content={`${user?.displayName && user.displayName}`} className="w-10 z-[10] rounded-full">
+                                            <img src={user?.photoURL} />
+                                            <Tooltip id="my-tooltip" />
+                                        </div>
+                                    </label>
+                                    <ul tabIndex={0} className="mt-3 z-[10] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
+                                        <li>
+                                            <a className="justify-between">
+                                                {user?.displayName}
+                                            </a>
+                                        </li>
+                                        {
+                                            admin ? <li><Link to="/dashboard/admin-profile"><button >Dashboard</button></Link></li> :
+                                                <li><Link to="/dashboard/user-profile"><button >Dashboard</button></Link></li>
+
+                                        }
+                                        <li><a onClick={handleLogOut}>Logout</a></li>
+                                    </ul>
+                                </div>
                             </div>
                             : <Link to="/login">
-                                <button className="btn btn-primary bg-[#99582a] text-white border-none font-bold hover:bg-[#e08c4fd3]">Join Us</button>
+
+                                <div className="flex items-center">
+                                    <FaBell className="text-2xl mr-2"></FaBell>
+                                    <button className="btn btn-primary bg-[#99582a] text-white border-none font-bold hover:bg-[#e08c4fd3]">Join Us</button>
+                                </div>
+
                             </Link>
                     }
 

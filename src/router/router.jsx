@@ -2,7 +2,6 @@ import { createBrowserRouter } from "react-router-dom";
 import Main from "../Layout/Main/Main";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import Home from "../Pages/Home/Home";
-import UpComingMeals from "../Pages/UpComingMeals/UpComingMeals";
 import Meals from "../Pages/Meals/Meals";
 import Login from "../Pages/Login/Login";
 import Register from "../Pages/Register/Register";
@@ -21,6 +20,7 @@ import AllReviews from "../Pages/Dashboard/AllReviews/AllReviews";
 import ServeMeals from "../Pages/Dashboard/ServeMeals/ServeMeals";
 import UpcomingMeals from "../Pages/Dashboard/UpcomingMeals/UpcomingMeals";
 import UpdateMeal from "../components/UpdateMeal/UpdateMeal";
+import UpcomingMealsCards from "../Pages/UpcomingMealsCards/UpcomingMealsCards";
 
 
 const router = createBrowserRouter([
@@ -39,7 +39,7 @@ const router = createBrowserRouter([
             },
             {
                 path: "/upComing-meals",
-                element: <UpComingMeals></UpComingMeals>
+                element: <UpcomingMealsCards></UpcomingMealsCards>
             },
             {
                 path: "/login",

@@ -30,11 +30,16 @@ const MealDetails = () => {
     // console.log(Object.keys(mealObject).toString());
     // console.log(filteredMeal);
     // console.log(mealObject);
-    const { _id, mealTitle, mealType, ingredients, mealImage, description, price, rating, timeDate, likes, reviews, adminName, admin_Email } = mealObject
+    const { _id, mealTitle, mealType, ingredients, mealImage, description, price, rating, timeDate, likes, reviews, adminName, admin_Email, liked } = mealObject
     const [like, setLike] = useState(false)
     useEffect(() => {
-        setLike(mealObject.liked)
-    }, [mealObject.liked])
+        if(liked.includes(user?.email)){
+            setLike(true)
+        }
+        else{
+            setLike(false)
+        }
+    }, [mealObject.liked, liked, user?.email])
     // console.log(like);
     let globalYear = "";
     let globalMonth = "";
@@ -69,10 +74,11 @@ const MealDetails = () => {
     // console.log(globalYear, globalMonth, globalDay);
     const convertedDate = `${globalYear}/${globalMonth}/${globalDay}`
     const handleLike = () => {
-        const updatedMealData = {mealTitle, mealType, ingredients, mealImage, description, price, rating, timeDate, likes: likes + 1, reviews, adminName, admin_Email, liked: true,}
+        const updatedMealData = {mealTitle, mealType, ingredients, mealImage, description, price, rating, timeDate, likes: likes + 1, reviews, adminName, admin_Email, liked: [...liked]}
         if (!user) {
             toast.error('Please Login first to like')
         } else {
+            updatedMealData.liked.push(user.email)
             axiosPublic.put(`/meals/${_id}`, updatedMealData)
                 .then(res => {
                     refetch()
@@ -98,7 +104,8 @@ const MealDetails = () => {
             confirmButtonText: "Yes, Un Liked it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                axiosPublic.put(`/meals/${_id}`, { liked: false, likes: likes - 1 })
+                const newLikedArr = liked.filter(email => email !== user?.email)
+                axiosPublic.put(`/meals/${_id}`, { liked:  newLikedArr, likes: likes - 1 })
                     .then(res => {
 
                         console.log(res.data.modifiedCount)

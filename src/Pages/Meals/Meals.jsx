@@ -1,4 +1,5 @@
 
+
 import { useRef, useState } from "react";
 import Footer from "../../SharedFile/Footer/Footer";
 import Navbar from "../../SharedFile/Navbar/Navbar";
@@ -6,40 +7,70 @@ import Container from "../../Utils/Container/Container";
 import useMeals from "../../hooks/useMeals";
 import MealsCard from "../Home/MealsByCategory/MealsCard/MealsCard";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
+// import InfiniteScroll from "react-infinite-scroll-component";
+
 
 
 
 
 const Meals = () => {
-    const axiosPublic = useAxiosPublic()
-    const [meals] = useMeals()
-    const [search, setSearch] = useState([])
-    const searchRef = useRef()
+    const axiosPublic = useAxiosPublic();
+    const [meals] = useMeals();
+    // const [page, setPage] = useState(0);
+    const [search, setSearch] = useState([]);
+    const searchRef = useRef();
+    // const startIndex = page * 8;
+    // const endIndex = startIndex + 8;
+
+    console.log(meals);
     const handleSearch = () => {
         const searchResult = searchRef.current.value;
-        searchRef.current.value = ""
+        searchRef.current.value = "";
         console.log(searchResult);
-        axiosPublic.get(`/meals?search=${searchResult}`)
-        .then(res => {
-            setSearch(res.data); 
-        })
-    }
-    const handleCategory = e => {
+        axiosPublic.get(`/meals?search=${searchResult}`).then((res) => {
+            setSearch(res.data);
+        });
+    };
+
+    const handleCategory = (e) => {
         e.preventDefault();
         const category = e.target.value;
-        axiosPublic.get(`/meals?category=${category}`)
-        .then(res => {
+        axiosPublic.get(`/meals?category=${category}`).then((res) => {
             setSearch(res.data);
-        })
+        });
     };
-    const handlePrice = e => {
-        e.preventDefault()
+
+    const handlePrice = (e) => {
+        e.preventDefault();
         const priceSort = e.target.value;
-        axiosPublic.get(`/meals?sort=${priceSort}`)
-        .then(res => {
+        axiosPublic.get(`/meals?sort=${priceSort}`).then((res) => {
             setSearch(res.data);
-        })
-    }
+        });
+    };
+    // const [mealsToDisplay, setMealsToDisplay] = useState([]);
+    // useEffect(() => {
+    //     const startIndex = page * 8;
+    //     const endIndex = startIndex + 8;
+    //     const mealsPerScroll = meals.slice(startIndex, endIndex);
+    //     setMealsToDisplay(mealsPerScroll);
+    // }, [meals, page]);
+
+    // const mealsPerScroll = meals.slice(startIndex, endIndex);
+    // const [mealsToDisplay, setMealsToDisplay] = useState(mealsPerScroll);
+
+    // console.log(mealsToDisplay);
+
+    // const fetchMoreData = () => {
+    //     setTimeout(() => {
+    //         setPage((prev) => prev + 1);
+    //         setMealsToDisplay((prevMealsToDisplay) => [
+    //             ...prevMealsToDisplay,
+    //             ...meals.slice(startIndex, endIndex),
+    //         ]);
+    //     }, 1500);
+
+
+    // }
     return (
         <div>
             <Navbar></Navbar>
@@ -58,7 +89,7 @@ const Meals = () => {
                             <option value="dinner">Dinner</option>
                         </select>
                         <select onChange={handlePrice} name="price" className="select select-bordered join-item">
-                            <option  disabled selected>Filter In Price</option>
+                            <option disabled selected>Filter In Price</option>
                             <option value="asc">Ascending</option>
                             <option value="desc">Descending</option>
                             <option value="lt10">Less Than $10</option>
@@ -69,11 +100,13 @@ const Meals = () => {
                         </div>
                     </div>
                 </div>
-                <div className="grid grid-cols-4 gap-7">
-                    {
-                       search.length > 0 ?  search.map(meal => <MealsCard key={meal._id} meal={meal}></MealsCard>) :  meals.map(meal => <MealsCard key={meal._id} meal={meal}></MealsCard>)
-                    }
-                </div>
+                
+                    <div className="grid grid-cols-4 gap-7">
+                        {
+                            search.length > 0 ? search.map(meal => <MealsCard key={meal._id} meal={meal}></MealsCard>) : meals.map(meal => <MealsCard key={meal._id} meal={meal}></MealsCard>)
+                        }
+                    </div>
+               
             </Container>
 
             <Footer></Footer>
@@ -82,3 +115,7 @@ const Meals = () => {
 };
 
 export default Meals;
+
+
+
+
