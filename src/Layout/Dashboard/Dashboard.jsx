@@ -11,7 +11,7 @@ const Dashboard = () => {
     useEffect(() => {
         if (!isLoading) {
           const findAdmin = isAdmin.find(individualUser => individualUser.email === user?.email);
-          console.log(findAdmin);
+        //   console.log(findAdmin);
           if (findAdmin) {
             setAdmin(true);
           } else {

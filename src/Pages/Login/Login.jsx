@@ -2,9 +2,19 @@ import { useForm } from "react-hook-form";
 import useAuth from "../../hooks/useAuth";
 import toast from "react-hot-toast";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import login_animation from "../../../public/login_animation.json"
+import Lottie from "react-lottie";
 
 
 const Login = () => {
+    const defaultOptions = {
+        loop: true,
+        autoplay: true,
+        animationData: login_animation,
+        rendererSettings: {
+            preserveAspectRatio: "xMidYMid slice"
+        }
+    };
     const { signIn, googleSignIn, } = useAuth()
     const navigate = useNavigate()
     const location = useLocation()
@@ -45,10 +55,15 @@ const Login = () => {
         <div className="hero min-h-screen bg-base-200">
             <div className="hero-content flex-col lg:flex-row">
                 <div className="text-center lg:text-left">
-                    <h1 className="text-5xl font-bold">Login now!</h1>
-                    <p className="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
+
+                    <Lottie
+                        options={defaultOptions}
+                        height={400}
+                        width={400}
+                    />
                 </div>
                 <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+                    <h1 className="text-4xl font-bold text-center mt-5">Login now!</h1>
                     <form onSubmit={handleSubmit(onSubmit)} className="card-body">
                         <div className="form-control">
                             <label className="label">

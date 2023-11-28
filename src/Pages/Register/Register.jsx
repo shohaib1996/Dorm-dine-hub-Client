@@ -3,10 +3,20 @@ import useAxiosPublic from "../../hooks/useAxiosPublic";
 import useAuth from "../../hooks/useAuth";
 import toast from "react-hot-toast";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import register_lottie from "../../../public/register_lottie.json"
+import Lottie from "react-lottie";
 
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`
 const Register = () => {
+    const defaultOptions = {
+        loop: true,
+        autoplay: true,
+        animationData: register_lottie,
+        rendererSettings: {
+            preserveAspectRatio: "xMidYMid slice"
+        }
+    };
     const navigate = useNavigate()
     const axiosPublic = useAxiosPublic()
     const { createUser, logOut, updateUserProfile, googleSignIn } = useAuth()
@@ -81,10 +91,15 @@ const Register = () => {
         <div className="hero min-h-screen bg-base-200">
             <div className="hero-content flex-col lg:flex-row">
                 <div className="text-center lg:text-left">
-                    <h1 className="text-5xl font-bold">Login now!</h1>
-                    <p className="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
+                    
+                  <Lottie
+                  options={defaultOptions}
+                  height={500}
+                  width={500}
+                  />  
                 </div>
                 <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+                <h1 className="text-4xl font-bold mt-5 text-center">Register now!</h1>
                     <form onSubmit={handleSubmit(onSubmit)} className="card-body">
                         <div className="form-control">
                             <label className="label">

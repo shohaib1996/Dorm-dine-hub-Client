@@ -1,16 +1,21 @@
 import useUser from "../../../hooks/useUser";
 import ribbonImg from "../../../../public/images/big-ribbon.png"
+import { useState } from "react";
+import UserModal from "./UserModal/UserModal";
 
 
 const UserProfile = () => {
-    const [singleUser,,isLoading] = useUser()
+    const [singleUser, , isLoading] = useUser()
+    
+    const [showModal, setShowModal] = useState(false)
     // console.log(singleUser);
-    if(isLoading){
+    if (isLoading) {
         return <p>Loading</p>
     }
-    const objUser = {...singleUser.data[0]}
+    const objUser = { ...singleUser.data[0] }
     console.log(objUser);
-    const {badge,image, badge_image, name, email} = objUser
+    const { badge, image, badge_image, name, email } = objUser
+
     return (
         <div>
             <div className="max-w-2xl mx-auto p-8 relative">
@@ -28,6 +33,25 @@ const UserProfile = () => {
                     <h1 className="border p-2 rounded-lg bg-slate-300"><span className="text-xl font-bold mr-5">Membership: </span> <span className="uppercase italic">{badge}</span></h1>
                 </div>
             </div>
+            <div>
+                <h1 className="text-3xl font-bold text-center my-5">----About Me----</h1>
+                <div className="my-12">
+                    <div className="flex items-center justify-center gap-12">
+                        <p>Hobby: </p>
+                        <p>Pet-name: </p>
+                    </div>
+                    <div className="flex items-center justify-center gap-12">
+                        <p>Address: </p>
+                        <p>Education: </p>
+
+                    </div>
+                    <div className="flex justify-center my-5">
+                        <button onClick={() => setShowModal(true)} className="btn btn-accent">Edit</button>
+                    </div>
+                </div>
+
+            </div>
+            <UserModal showModal={showModal} setShowModal={setShowModal}></UserModal>
         </div>
     );
 };
