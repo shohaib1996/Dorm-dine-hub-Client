@@ -1,6 +1,7 @@
 import Footer from "../../SharedFile/Footer/Footer";
 import Navbar from "../../SharedFile/Navbar/Navbar";
 import Container from "../../Utils/Container/Container";
+import ContactUs from "../../components/ContactUs/ContactUs";
 import Banner from "./Banner/Banner";
 import MealsByCategory from "./MealsByCategory/MealsByCategory";
 import Membership from "./Membership/Membership";
@@ -24,6 +25,7 @@ const Home = () => {
                 </div>
                 <MealsByCategory></MealsByCategory>
                 <Membership></Membership>
+                <ContactUs></ContactUs>
             </Container>
             <Footer></Footer>
         </div>
