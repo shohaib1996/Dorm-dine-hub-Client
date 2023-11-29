@@ -148,6 +148,12 @@ const MealDetails = () => {
         }
 
     }
+    const handleReview = () => {
+        if(!user){
+           return toast.error('please login first to make a review!!')
+        }
+        setShowModal(true)
+    }
 
 
 
@@ -208,7 +214,7 @@ const MealDetails = () => {
                     <div className="flex justify-center flex-col relative">
                         <img className="mt-12 w-[800px] mx-auto" src="https://static.vecteezy.com/system/resources/thumbnails/022/324/115/small/gold-ribbon-banner-free-png.png" alt="" />
                         <p className="text-center text-4xl font-bold text-[#283618] absolute top-20 left-[512px]">Add a review !!</p>
-                        <button onClick={()=> setShowModal(true)} className="btn w-96 h-48 border-4 border-slate-600 bg-transparent hover:bg-transparent hover:border-green-500 mx-auto text-3xl">Add a review</button>
+                        <button onClick={handleReview} className="btn w-96 h-48 border-4 border-slate-600 bg-transparent hover:bg-transparent hover:border-green-500 mx-auto text-3xl">Add a review</button>
                     </div>
                     <ReviewModal refetch={refetch} reload={reload} showModal={showModal} setShowModal={setShowModal} meal={mealObject}></ReviewModal>
 

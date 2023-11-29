@@ -62,6 +62,21 @@ const Checkout = () => {
             <Container>
                 <h1 className="mt-20 text-center text-4xl font-bold uppercase">Payment</h1>
                 <div>
+                    <p className="text-xl font-bold my-5 text-center">Price: {obj.price}</p>
+                    <p className="text-xl font-bold my-5 text-center">Badge: {obj.name}</p>
+                    <div>
+                        {
+                            obj?.benefits?.map((b, i) => 
+                                <ul className="text-center" key={i}>
+                                    <li className="">{i+1}-- {b}</li>
+
+                                </ul>
+                                
+                            )
+                        }
+                    </div>
+                </div>
+                <div className="mt-12">
                     <Elements stripe={stripePromise}>
                         <CheckoutForm price={obj.price} package_name={obj.name} badge_image={obj.badge_image}></CheckoutForm>
 

@@ -1,20 +1,22 @@
 import { useQuery } from '@tanstack/react-query';
 import ribbonImg from '../../../../public/images/big-ribbon.png'
 // import useAuth from '../../../hooks/useAuth';
-import useAxiosPublic from '../../../hooks/useAxiosPublic';
+// import useAxiosPublic from '../../../hooks/useAxiosPublic';
 import ManageUsersRow from './ManageUsersRow/ManageUsersRow';
 import { useEffect, useRef, useState } from 'react';
+import useAxiosSecure from '../../../hooks/useAxiosSecure';
 
 const ManageUsers = () => {
     // const {user} = useAuth()
-    const axiosPublic = useAxiosPublic()
+    // const axiosPublic = useAxiosPublic()
+    const axiosSecure = useAxiosSecure()
     const inputRef = useRef()
     const [page, setPage] = useState(0)
     const [search, setSearch] = useState([])
     const { data: users = [], refetch } = useQuery({
         queryKey: ["allUsers", page],
         queryFn: async () => {
-            const res = await axiosPublic.get(`/users?page=${page}&limit=10`)
+            const res = await axiosSecure.get(`/users?page=${page}&limit=10`)
             const data = await res.data;
             return data
         }
@@ -36,13 +38,13 @@ const ManageUsers = () => {
         const inputValue = inputRef.current.value
         if(inputValue.includes("@")){
             console.log(inputValue);
-            axiosPublic.get(`/users?email=${inputValue}`)
+            axiosSecure.get(`/users?email=${inputValue}`)
             .then(res=> {
                 setSearch(res.data.data);
             })
         }
         else{
-            axiosPublic.get(`/users?username=${inputValue}`)
+            axiosSecure.get(`/users?username=${inputValue}`)
             .then(res => {
                 setSearch(res.data.data);
             })

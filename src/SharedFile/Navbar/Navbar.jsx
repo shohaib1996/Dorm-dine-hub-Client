@@ -29,7 +29,7 @@ const Navbar = () => {
         return <p>Loading...</p>;
     }
     // const isAdmin = false
-    console.log(isAdmin);
+    // console.log(isAdmin);
     const handleLogOut = () => {
         logOut()
             .then(() => {

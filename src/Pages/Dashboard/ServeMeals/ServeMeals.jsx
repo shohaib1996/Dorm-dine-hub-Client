@@ -28,23 +28,23 @@ const ServeMeals = () => {
     // const pages = [...Array(numberOfPages).keys()]
     console.log(pages);
     const handleSearch = (e) => {
-        
+
         e.preventDefault()
         const inputValue = inputRef.current.value
-        if(inputValue.includes("@")){
+        if (inputValue.includes("@")) {
             console.log(inputValue);
             axiosPublic.get(`/request-meals?email=${inputValue}`)
-            .then(res=> {
-                setSearch(res.data.data);
-            })
+                .then(res => {
+                    setSearch(res.data.data);
+                })
         }
-        else{
+        else {
             axiosPublic.get(`/request-meals?username=${inputValue}`)
-            .then(res => {
-                setSearch(res.data.data);
-            })
+                .then(res => {
+                    setSearch(res.data.data);
+                })
         }
-        
+
 
     }
 
@@ -57,7 +57,7 @@ const ServeMeals = () => {
             <p className='text-xs italic font-bold text-center my-2'>Please for email search atleast put (@)</p>
             <div className='max-w-2xl mx-auto flex justify-center'>
                 <div className="join">
-                    
+
                     <input ref={inputRef} className="input input-bordered join-item" placeholder="email and username" />
                     <button onClick={handleSearch} className="btn bg-[#aacc00] join-item rounded-r-full">Search</button>
                 </div>
@@ -110,13 +110,14 @@ const ServeMeals = () => {
                                 </thead>
                                 <tbody className="divide-y divide-gray-200 dark:divide-gray-700">
                                     {
-                                       search.length > 0 ? search?.map((meal, i) => <ServeMealsRow i={i} key={meal._id} meal={meal} refetch={refetch}></ServeMealsRow>): allRequestMeals?.data?.map((meal, i) => <ServeMealsRow i={i} key={meal._id} meal={meal} refetch={refetch}></ServeMealsRow>)
+                                        search.length > 0 ? search?.map((meal, i) => <ServeMealsRow i={i} key={meal._id} meal={meal} refetch={refetch}></ServeMealsRow>) : allRequestMeals?.data?.map((meal, i) => <ServeMealsRow i={i} key={meal._id} meal={meal} refetch={refetch}></ServeMealsRow>)
                                     }
 
                                 </tbody>
                             </table>
                         </div>
-                        <div className="mt-5 flex flex-row justify-center items-center space-x-3">
+                        {
+                            search.length > 0 ? "" : <div className="mt-5 flex flex-row justify-center items-center space-x-3">
                             <button onClick={() => setPage(Math.max(page - 1, 0))} className="btn hover:bg-[#aacc00] hover:text-white">Prev</button>
                             {
                                 pages?.map(p => <button
@@ -127,6 +128,7 @@ const ServeMeals = () => {
                             }
                             <button onClick={() => setPage(Math.min(page + 1, pages.length - 1))} className="btn hover:bg-[#aacc00] hover:text-white">Next</button>
                         </div>
+                        }
                     </div>
                 </div>
             </div>

@@ -3,25 +3,28 @@ import ribbonImg from "../../../../public/images/big-ribbon.png"
 import { useState } from "react";
 import UserModal from "./UserModal/UserModal";
 import { useQuery } from "@tanstack/react-query";
-import useAxiosPublic from "../../../hooks/useAxiosPublic";
+// import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import useAuth from "../../../hooks/useAuth";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
+
 
 
 const UserProfile = () => {
-    const axiosPublic = useAxiosPublic()
-    const {user} = useAuth()
+    // const axiosPublic = useAxiosPublic()
+    const axiosSecure = useAxiosSecure()
+    const { user } = useAuth()
     const [userInfo, setUserInfo] = useState({})
-    const {data: aboutInfo, isLoading: loading, refetch} = useQuery({
+    const { data: aboutInfo, isLoading: loading, refetch } = useQuery({
         queryKey: ["aboutInfo", user?.email],
-        queryFn: async() => {
-            const res = await axiosPublic.get(`/about?email=${user?.email}`)
+        queryFn: async () => {
+            const res = await axiosSecure.get(`/about?email=${user?.email}`)
             const data = await res.data
             return data
         }
 
     })
     const [singleUser, , isLoading] = useUser()
-    
+
     const [showModal, setShowModal] = useState(false)
     // console.log(singleUser);
     if (isLoading) {
@@ -30,17 +33,17 @@ const UserProfile = () => {
     const objUser = { ...singleUser.data[0] }
     console.log(objUser);
     const { badge, image, badge_image, name, email } = objUser
-  
+
     console.log(aboutInfo);
-    const objInfo = {...aboutInfo[0]}
-    if(loading) {
+    const objInfo = { ...aboutInfo[0] }
+    if (loading) {
         return <p>Loading..</p>
     }
     const handleUpdateModal = user => {
         setShowModal(true)
         console.log(user);
         setUserInfo(user)
-        
+
     }
     console.log(userInfo);
 
