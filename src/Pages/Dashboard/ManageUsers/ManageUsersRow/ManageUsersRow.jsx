@@ -1,10 +1,12 @@
 
 import { PropTypes } from 'prop-types';
-import useAxiosPublic from '../../../../hooks/useAxiosPublic';
+// import useAxiosPublic from '../../../../hooks/useAxiosPublic';
 import toast from 'react-hot-toast';
+import useAxiosSecure from '../../../../hooks/useAxiosSecure';
 
 const ManageUsersRow = ({ user, i, refetch }) => {
-    const axiosPublic = useAxiosPublic()
+    const axiosSecure = useAxiosSecure()
+    // const axiosPublic = useAxiosPublic()
     const { badge_image, badge, name, email, _id, role } = user
 
     const handleMakeAdmin = id => {
@@ -12,7 +14,7 @@ const ManageUsersRow = ({ user, i, refetch }) => {
         const updateRole = {
             role: 'admin'
         }
-        axiosPublic.patch(`/users/admin/${id}`, updateRole)
+        axiosSecure.patch(`/users/admin/${id}`, updateRole)
         .then(res => {
             console.log(res.data);
             if(res.data.modifiedCount > 0){

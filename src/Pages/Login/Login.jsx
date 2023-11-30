@@ -8,8 +8,10 @@ import useAxiosPublic from "../../hooks/useAxiosPublic";
 
 
 
+
 const Login = () => {
     const axiosPublic = useAxiosPublic()
+
     const defaultOptions = {
         loop: true,
         autoplay: true,
@@ -54,13 +56,25 @@ const Login = () => {
                     badge: 'Bronze',
                     badge_image: "https://i.ibb.co/TrN8dFr/bronze-badge-removebg-preview.png"
                 }
-                axiosPublic.post("/users", newUser)
-                    .then(res => {
-                        console.log(res);
-                    }).catch(error => {
-                        console.error(error);
-                    })
-                navigate(from, { replace: true });
+                axiosPublic.get(`/users?email=${newUser.email}`)
+                .then(existingUser => {
+                    if (existingUser.data.data.length === 0) {
+                        console.log(existingUser.data.data);
+                        axiosPublic.post("/users", newUser)
+                            .then(res => {
+                                console.log(res);
+                            })
+                            .catch(error => {
+                                console.error(error);
+                            });
+                    } else {
+
+                        console.log("User already exists in the database.");
+                    }
+
+                    navigate(from, { replace: true });
+                })
+                
 
             })
             .catch(error => {

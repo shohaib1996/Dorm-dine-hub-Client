@@ -1,15 +1,17 @@
 
 import { PropTypes } from 'prop-types';
-import useAxiosPublic from '../../../../hooks/useAxiosPublic';
+// import useAxiosPublic from '../../../../hooks/useAxiosPublic';
 import toast from 'react-hot-toast';
+import useAxiosSecure from '../../../../hooks/useAxiosSecure';
 
 
 const RequestedMealsRow = ({meal, i, refetch}) => {
-    const axiosPublic = useAxiosPublic()
+    // const axiosPublic = useAxiosPublic()
+    const axiosSecure = useAxiosSecure()
     const {mealTitle, likes, reviews, status, _id} = meal
     const handleCancel = (id, mealTitle) => {
         console.log(id, mealTitle);
-        axiosPublic.delete(`/request-meals/${id}`)
+        axiosSecure.delete(`/request-meals/${id}`)
         .then(res => {
             console.log(res.data);
             if(res.data.deletedCount > 0){
