@@ -25,7 +25,7 @@ const Register = () => {
         handleSubmit,
         formState: { errors },
     } = useForm()
-    
+
     const location = useLocation()
     const from = location.state?.from?.pathname || "/";
 
@@ -80,6 +80,19 @@ const Register = () => {
             .then(result => {
                 console.log(result.user)
                 toast.success("Login Successfully")
+                const newUser = {
+                    name: result.user.displayName,
+                    email: result.user.email,
+                    image: result.user.photoURL,
+                    badge: 'Bronze',
+                    badge_image: "https://i.ibb.co/TrN8dFr/bronze-badge-removebg-preview.png"
+                }
+                axiosPublic.post("/users", newUser)
+                    .then(res => {
+                        console.log(res);
+                    }).catch(error => {
+                        console.error(error);
+                    })
                 navigate(from, { replace: true });
 
             })
@@ -91,15 +104,15 @@ const Register = () => {
         <div className="hero min-h-screen bg-base-200">
             <div className="hero-content flex-col lg:flex-row">
                 <div className="text-center lg:text-left">
-                    
-                  <Lottie
-                  options={defaultOptions}
-                  height={500}
-                  width={500}
-                  />  
+
+                    <Lottie
+                        options={defaultOptions}
+                        height={500}
+                        width={500}
+                    />
                 </div>
                 <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-                <h1 className="text-4xl font-bold mt-5 text-center">Register now!</h1>
+                    <h1 className="text-4xl font-bold mt-5 text-center">Register now!</h1>
                     <form onSubmit={handleSubmit(onSubmit)} className="card-body">
                         <div className="form-control">
                             <label className="label">

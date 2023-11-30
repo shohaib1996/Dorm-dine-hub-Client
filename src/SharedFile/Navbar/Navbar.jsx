@@ -12,9 +12,10 @@ import { FaBell } from "react-icons/fa";
 const Navbar = () => {
     const { user, logOut } = useAuth()
     const [admin, setAdmin] = useState(false)
+
     const [isAdmin, isLoading] = useAdmin()
     useEffect(() => {
-        if (!isLoading) {
+        if (user && !isLoading) {
             const findAdmin = isAdmin.find(individualUser => individualUser.email === user?.email);
             console.log(findAdmin);
             if (findAdmin) {
@@ -26,10 +27,11 @@ const Navbar = () => {
     }, [user, isAdmin, isLoading]);
 
     if (isLoading) {
-        return <p>Loading...</p>;
+        return <p>pppppppppp...</p>;
     }
     // const isAdmin = false
-    // console.log(isAdmin);
+    console.log(isAdmin);
+    console.log(admin);
     const handleLogOut = () => {
         logOut()
             .then(() => {
@@ -52,13 +54,16 @@ const Navbar = () => {
                             <NavbarLinks></NavbarLinks>
                         </ul>
                     </div>
-                    <a className="flex items-center">
+                    <div className="flex items-center">
                         <img className="w-20 rounded-3xl mr-3 h-12" src={logo} alt="logo" />
-                        <p><span className="bg-[#99582a] hidden lg:flex text-white text-xl p-1 rounded-md font-bold">DormDine</span><span className="text-xl hidden lg:flex text-[#283618] font-bold">Hub</span></p>
-                    </a>
+                        <p className="hidden lg:flex items-center">
+                            <span className="bg-[#99582a]  items-center text-white text-xl p-1 rounded-md font-bold">DormDine</span>
+                            <span className="text-xl hidden lg:flex text-[#283618] font-bold">Hub</span>
+                        </p>
+                    </div>
                 </div>
                 <div className="navbar-center hidden lg:flex">
-                    <ul className="menu menu-horizontal px-1 space-x-4">
+                    <ul className="menu menu-horizontal px-1 space-x-2">
                         <NavbarLinks></NavbarLinks>
                     </ul>
                 </div>

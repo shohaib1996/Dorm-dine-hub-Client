@@ -4,9 +4,12 @@ import toast from "react-hot-toast";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import login_animation from "../../../public/login_animation.json"
 import Lottie from "react-lottie";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
+
 
 
 const Login = () => {
+    const axiosPublic = useAxiosPublic()
     const defaultOptions = {
         loop: true,
         autoplay: true,
@@ -44,6 +47,19 @@ const Login = () => {
             .then(result => {
                 console.log(result.user)
                 toast.success("Login Successfully")
+                const newUser = {
+                    name: result.user.displayName,
+                    email: result.user.email,
+                    image: result.user.photoURL,
+                    badge: 'Bronze',
+                    badge_image: "https://i.ibb.co/TrN8dFr/bronze-badge-removebg-preview.png"
+                }
+                axiosPublic.post("/users", newUser)
+                    .then(res => {
+                        console.log(res);
+                    }).catch(error => {
+                        console.error(error);
+                    })
                 navigate(from, { replace: true });
 
             })

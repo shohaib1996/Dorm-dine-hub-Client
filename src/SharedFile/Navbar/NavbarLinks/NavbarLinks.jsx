@@ -9,7 +9,7 @@ const NavbarLinks = () => {
                 <NavLink
                     to="/"
                     className={({ isActive, isPending }) =>
-                        isPending ? "pending" : isActive ? "text-lg text-white bg-[#aacc00] font-bold rounded-md" : "text-lg"
+                        isPending ? "pending" : isActive ? "text-base text-white bg-[#aacc00] font-bold rounded-md" : "text-base"
                     }
                 >
                     Home
@@ -19,7 +19,7 @@ const NavbarLinks = () => {
                 <NavLink
                     to="/meals"
                     className={({ isActive, isPending }) =>
-                        isPending ? "pending" : isActive ? "text-lg text-white bg-[#aacc00] font-bold rounded-md" : "text-lg"
+                        isPending ? "pending" : isActive ? "text-base text-white bg-[#aacc00] font-bold rounded-md" : "text-base"
                     }
                 >
                     Meals
@@ -29,7 +29,7 @@ const NavbarLinks = () => {
                 <NavLink
                     to="/upComing-meals"
                     className={({ isActive, isPending }) =>
-                        isPending ? "pending" : isActive ? "text-lg text-white bg-[#aacc00] font-bold rounded-md" : "text-lg"
+                        isPending ? "pending" : isActive ? "text-base text-white bg-[#aacc00] font-bold rounded-md" : "text-base"
                     }
                 >
                     Up Coming Meals

@@ -3,21 +3,21 @@ import ribbonImg from "../../../../public/images/big-ribbon.png"
 import { useState } from "react";
 import UserModal from "./UserModal/UserModal";
 import { useQuery } from "@tanstack/react-query";
-// import useAxiosPublic from "../../../hooks/useAxiosPublic";
+import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import useAuth from "../../../hooks/useAuth";
-import useAxiosSecure from "../../../hooks/useAxiosSecure";
+// import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 
 
 const UserProfile = () => {
-    // const axiosPublic = useAxiosPublic()
-    const axiosSecure = useAxiosSecure()
+    const axiosPublic = useAxiosPublic()
+    // const axiosSecure = useAxiosSecure()
     const { user } = useAuth()
     const [userInfo, setUserInfo] = useState({})
     const { data: aboutInfo, isLoading: loading, refetch } = useQuery({
         queryKey: ["aboutInfo", user?.email],
         queryFn: async () => {
-            const res = await axiosSecure.get(`/about?email=${user?.email}`)
+            const res = await axiosPublic.get(`/about?email=${user?.email}`)
             const data = await res.data
             return data
         }
