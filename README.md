@@ -18,3 +18,12 @@ A hostel management system For a university
 5. Site is well secured by jwt token and axios interceptors
 
 6. User can filter meals by their own interest price range and meal type.
+
+
+## Tech Stack
+
+**Client:** React, TailwindCSS, 
+
+**Server:** Node, Express
+
+**Database:** MongoDb (Mongoose) 
