@@ -31,3 +31,7 @@ A hostel management system For a university
 **Database:** MongoDb (Mongoose) 
 
 **Authentication:** Firebase, JWT 
+
+## Screenshots
+
+![App Screenshot](https://imgur.com/TQMWyFI)
