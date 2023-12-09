@@ -29,3 +29,5 @@ A hostel management system For a university
 **Server:** Node, Express
 
 **Database:** MongoDb (Mongoose) 
+
+**Authentication:** Firebase, JWT 
