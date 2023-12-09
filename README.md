@@ -34,4 +34,4 @@ A hostel management system For a university
 
 ## Screenshots
 
-![App Screenshot](https://imgur.com/TQMWyFI)
+![App Screenshot](https://i.imgur.com/TQMWyFI.png)
