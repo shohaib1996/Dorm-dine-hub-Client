@@ -5,6 +5,8 @@ A hostel management system For a university
 
 # live Site: https://amazing-lamington-f5fdd2.netlify.app/
 
+# Server: [https://amazing-lamington-f5fdd2.netlify.app/](https://github.com/shohaib1996/Dorm-dine-hub-server)
+
 # Feature
 
 1. Admin and user pannel is different so user and admin can do different things what they want to do
