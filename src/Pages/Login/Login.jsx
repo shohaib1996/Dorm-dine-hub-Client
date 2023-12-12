@@ -89,7 +89,7 @@ const Login = () => {
                     <Lottie
                         options={defaultOptions}
                         height={400}
-                        width={400}
+                        width={380}
                     />
                 </div>
                 <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">

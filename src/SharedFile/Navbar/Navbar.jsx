@@ -27,11 +27,11 @@ const Navbar = () => {
     }, [user, isAdmin, isLoading]);
 
     if (isLoading) {
-        return <p>pppppppppp...</p>;
+        return <p></p>;
     }
     // const isAdmin = false
-    console.log(isAdmin);
-    console.log(admin);
+    // console.log(isAdmin);
+    // console.log(admin);
     const handleLogOut = () => {
         logOut()
             .then(() => {

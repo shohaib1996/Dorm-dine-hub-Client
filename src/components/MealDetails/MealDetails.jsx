@@ -168,7 +168,7 @@ const MealDetails = () => {
                             <button className="bg-[#b88f3f] px-3 py-2 rounded-2xl text-white font-bold border-[5px] border-[#d0c2a6] hover:border-[#aacc00] hover:bg-[#55421d]">See All</button>
                         </Link>
                     </div>
-                    <div className="max-w-5xl mx-auto flex justify-center gap-5">
+                    <div className="max-w-5xl mx-auto flex flex-col lg:flex-row  p-5 lg:p-0 items-center justify-center gap-5">
                         <div className="flex-[2] relative">
                             <img className="w-[450px] border-4 border-[#c2b59d] p-2  h-[460px] object-cover" src={mealImage} alt="" />
                             <img className="w-32 h-28 absolute -top-1 -left-0" src={priceTag} alt="" />
@@ -213,7 +213,7 @@ const MealDetails = () => {
                     <div className="divider"><img className='animate-spin my-12' src="https://wedesignthemes.com/html/bella/skins/palebrown/images/driver-two.png" alt="" /></div>
                     <div className="flex justify-center flex-col relative">
                         <img className="mt-12 w-[800px] mx-auto" src="https://static.vecteezy.com/system/resources/thumbnails/022/324/115/small/gold-ribbon-banner-free-png.png" alt="" />
-                        <p className="text-center text-4xl font-bold text-[#283618] absolute top-20 left-[512px]">Add a review !!</p>
+                        <p className="text-center text-xl lg:text-4xl font-bold text-[#283618] absolute top-16 lg:top-20 left-[150px] lg:left-[512px]">Add a review !!</p>
                         <button onClick={handleReview} className="btn w-96 h-48 border-4 border-slate-600 bg-transparent hover:bg-transparent hover:border-green-500 mx-auto text-3xl">Add a review</button>
                     </div>
                     <ReviewModal refetch={refetch} reload={reload} showModal={showModal} setShowModal={setShowModal} meal={mealObject}></ReviewModal>

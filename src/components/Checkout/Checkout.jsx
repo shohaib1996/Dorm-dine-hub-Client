@@ -76,7 +76,7 @@ const Checkout = () => {
                         }
                     </div>
                 </div>
-                <div className="mt-12">
+                <div className="mt-12 max-w-sm mx-auto">
                     <Elements stripe={stripePromise}>
                         <CheckoutForm price={obj.price} package_name={obj.name} badge_image={obj.badge_image}></CheckoutForm>
 

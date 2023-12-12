@@ -47,14 +47,14 @@ const AdminProfile = () => {
         <div>
             <div className="max-w-2xl mx-auto p-8 relative">
                 <img src={ribbonImg} alt="" />
-                <p className="text-3xl font-bold  text-center absolute top-14 text-white left-[240px]">Admin profile</p>
+                <p className="text-2xl lg:text-3xl font-bold  text-center absolute top-10 lg:top-14 text-white left-[120px] lg:left-[240px]">Admin profile</p>
             </div>
             <p className="text-center font-bold text-3xl">Number of Meals you added: {number.length}</p>
             <p className="text-center font-bold text-xl">Number of Upcoming Meals you added: {upcomingNumber.length}</p>
             <p className="text-center text-xl font-bold my-2 uppercase">Role: {role}</p>
             <div>
 
-                <div className="p-10 flex justify-center">
+                <div className="p-10 flex justify-center flex-col lg:flex-row">
                     <div className="flex-1 flex flex-col justify-center relative ">
                         <img className="w-[250px] h-[300px] border-4 p-3 object-cover " src={image} alt="" />
                         <img className="w-20 h-20 absolute bottom-2 left-[165px] animate-bounce" src={badge_image} alt="" />

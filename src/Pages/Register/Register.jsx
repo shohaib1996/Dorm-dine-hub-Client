@@ -119,7 +119,7 @@ const Register = () => {
                     <Lottie
                         options={defaultOptions}
                         height={500}
-                        width={500}
+                        width={380}
                     />
                 </div>
                 <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">

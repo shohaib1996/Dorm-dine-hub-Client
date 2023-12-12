@@ -19,10 +19,39 @@ const Meals = () => {
 
     const [searchResult, setSearchResult] = useState('');
     const searchRef = useRef();
-    
-    
+    // const [page, setPage] = useState(0)
+    // const [data, setData] = useState([])
 
-  
+
+    // useEffect(() => {
+    //     axiosPublic.get(`http://localhost:5000/meals?page=${page}&limit=4`)
+    //         .then(res => {
+    //             console.log(res.data);
+    //             setData(prev => [...prev, ...res.data])
+    //         })
+    //         .catch(error => {
+    //             console.error("Error fetching data:", error);
+    //         });
+    // }, [page, axiosPublic])
+    // const handleScroll = () => {
+    //     if (window.innerHeight + document.documentElement.scrollTop + 1 >= document.documentElement.scrollHeight) {
+    //         setPage(prev => prev + 1)
+    //     }
+    // }
+    // console.log(page);
+    // console.log(data);
+
+
+
+    // useEffect(() => {
+    //     window.addEventListener("scroll", handleScroll)
+    //     return () => window.removeEventListener("scroll", handleScroll)
+    // }, [])
+
+
+
+
+
     const { data: search = [], refetch } = useQuery({
         queryKey: ["searchResult", searchResult],
         queryFn: async () => {
@@ -36,6 +65,8 @@ const Meals = () => {
     useEffect(() => {
         refetch()
     }, [searchResult, refetch])
+
+   
 
 
 
@@ -56,7 +87,7 @@ const Meals = () => {
         const priceSort = e.target.value;
         setSearchResult(`?sort=${priceSort}`);
     };
-  
+
 
 
 
@@ -66,7 +97,7 @@ const Meals = () => {
             <Navbar></Navbar>
             <Container>
                 <div className="flex justify-center items-center flex-row my-8">
-                    <div className="join">
+                    <div className="join w-[400px] mx-auto lg:w-full flex-col lg:flex-row justify-center gap-3 lg:gap-0">
                         <div>
                             <div>
                                 <input ref={searchRef} className="input w-[400px] input-bordered join-item" placeholder="Search" />
@@ -91,14 +122,14 @@ const Meals = () => {
                     </div>
                 </div>
 
-               
-                    <div className="grid grid-cols-4 gap-7">
-                        {
-                            search.length > 0 ? search.map(meal => <MealsCard key={meal._id} meal={meal}></MealsCard>) : meals.map(meal => <MealsCard key={meal._id} meal={meal}></MealsCard>)
-                        }
-                    </div>
-                    
-                
+
+                <div className="grid grid-cols-1 md:grid-cols-2 p-5 lg:p-0 lg:grid-cols-4 gap-7">
+                    {
+                        search.length > 0 ? search.map(meal => <MealsCard key={meal._id} meal={meal}></MealsCard>) : meals.map(meal => <MealsCard key={meal._id} meal={meal}></MealsCard>)
+                    }
+                </div>
+
+
 
             </Container>
 

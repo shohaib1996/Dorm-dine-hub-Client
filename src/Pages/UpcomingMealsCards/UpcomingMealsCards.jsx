@@ -25,7 +25,7 @@ const UpcomingMealsCards = () => {
                     <h1 className="text-4xl font-bold">Upcoming Meals</h1>
                     <p>Please like your favourite food if it reach 10 likes we will published it</p>
                 </div>
-                <div className="grid grid-cols-4 gap-7">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 p-5 lg:p-0 gap-7">
                     {
                         upcomingMealsData.map(meal => <UpcomingMealsCard
                             key={meal._id}

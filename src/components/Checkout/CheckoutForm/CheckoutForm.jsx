@@ -117,7 +117,7 @@ const CheckoutForm = ({ price, package_name, badge_image }) => {
                     },
                 }}
             />
-            <div className="max-w-sm mx-auto">
+            <div className="max-w-xs mx-auto">
                 <button className="btn w-full  btn-primary mt-8" type="submit" disabled={!stripe || !clientSecret}>
                     Pay
                 </button>

@@ -32,7 +32,7 @@ const UpcomingMeals = () => {
         <div>
             <div className="max-w-2xl mx-auto p-8 relative">
                 <img src={ribbonImg} alt="" />
-                <p className="text-3xl font-bold  text-center absolute top-14 text-white left-[220px]">Upcoming Meals</p>
+                <p className="text-3xl font-bold  text-center absolute top-10 md:top-14 lg:top-14 text-white left-[130px] md:left-[220px] lg:left-[220px]">Upcoming Meals</p>
             </div>
             <h1 className="text-3xl font-bold text-center">Total Upcoming Meals: {upcomingMeals.length}</h1>
             <div className="flex flex-col p-5">
