@@ -5,6 +5,8 @@ A hostel management system For a university
 
 # live Site: https://amazing-lamington-f5fdd2.netlify.app/
 
+# Server: https://github.com/shohaib1996/Dorm-dine-hub-server
+
 # Feature
 
 1. Admin and user pannel is different so user and admin can do different things what they want to do
@@ -18,3 +20,18 @@ A hostel management system For a university
 5. Site is well secured by jwt token and axios interceptors
 
 6. User can filter meals by their own interest price range and meal type.
+
+
+## Tech Stack
+
+**Client:** React, TailwindCSS, 
+
+**Server:** Node, Express
+
+**Database:** MongoDb (Mongoose) 
+
+**Authentication:** Firebase, JWT 
+
+## Screenshots
+
+![App Screenshot](https://i.imgur.com/ZYZKJ3H.png)
