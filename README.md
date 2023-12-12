@@ -9,7 +9,7 @@ A hostel management system For a university
 
 # Feature
 
-1. Admin and user pannel is different so user and admin can do different things what they want to do
+1. Admin and user pannel is different so user and admin can do different things what they want to do for admin login **Email:mama@mami.com** **pass:123456** 
 
 2. User can like and give a review to a food which give more interactivity to a user to the Site
 
